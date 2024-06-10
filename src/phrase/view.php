@@ -88,7 +88,7 @@ if ($visibility_type == "automatic") {
                             <?php elseif ($visibility_type == "manual" && $visibility == "1") : ?>
                                 <h1 class="w-full truncate text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100 md:max-w-[800px]"><?php echo $content; ?></h1>
                             <?php elseif ($visibility_type == "automatic" && $current_time < $show_time) : ?>
-                                <p class="text-red-500"><?php echo $content; ?></p>
+                                <p class="text-red-500">The phrase is not yet published. Time remaining: <span id="time-remaining"><?php echo gmdate("H:i:s", $remaining_time); ?></span>.</p>
                             <?php else : ?>
                                 <h1 class="w-full truncate text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100 md:max-w-[800px]"><?php echo $content; ?></h1>
                             <?php endif; ?>
@@ -157,6 +157,33 @@ if ($visibility_type == "automatic") {
     </div>
     <script>
         lucide.createIcons();
+
+        function startCountdown(duration) {
+            let timer = duration,
+                hours, minutes, seconds;
+            const display = document.getElementById('time-remaining');
+
+            const interval = setInterval(function() {
+                hours = Math.floor(timer / 3600);
+                minutes = Math.floor((timer % 3600) / 60);
+                seconds = Math.floor(timer % 60);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    window.location.reload();
+                }
+            }, 1000);
+        }
+
+        const remainingTime = <?php echo $remaining_time; ?>;
+
+        startCountdown(remainingTime);
     </script>
 </body>
 
