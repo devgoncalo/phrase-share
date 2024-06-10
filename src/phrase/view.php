@@ -27,7 +27,11 @@ $user_stmt->execute(["user_id" => $user_id]);
 $user = $user_stmt->fetch();
 
 if ($visibility_type == "manual") {
-    $content = $phrase["content"];
+    if ($visibility == "1") {
+        $content = $phrase["content"];
+    } else {
+        $content = "The writer didn't publish the phrase yet.";
+    }
 }
 
 if ($visibility_type == "automatic") {
@@ -37,7 +41,7 @@ if ($visibility_type == "automatic") {
 
     if ($current_time < $show_time) {
         $content =
-            "The phrase is not yet available. Time remaining: " .
+            "The phrase is not yet published. Time remaining: " .
             gmdate("H:i:s", $remaining_time) .
             ".";
     } else {
@@ -79,12 +83,14 @@ if ($visibility_type == "automatic") {
                         <i data-lucide="text" class="size-16"></i>
                         <div class="w-full overflow-hidden text-center md:text-left">
                             <span class="text-sm font-semibold text-neutral-400"><?php echo $title; ?></span>
-                            <?php if ($visibility_type == "manual") : ?>
+                            <?php if ($visibility_type == "manual" && $visibility == "0") : ?>
+                                <p class="text-red-500"><?php echo $content; ?></p>
+                            <?php elseif ($visibility_type == "manual" && $visibility == "1") : ?>
                                 <h1 class="w-full truncate text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100 md:max-w-[800px]"><?php echo $content; ?></h1>
+                            <?php elseif ($visibility_type == "automatic" && $current_time < $show_time) : ?>
+                                <p class="text-red-500"><?php echo $content; ?></p>
                             <?php else : ?>
-                                <p class="<?php echo $current_time < $show_time
-                                                ? "text-red-500"
-                                                : ""; ?>"><?php echo $content; ?></p>
+                                <h1 class="w-full truncate text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100 md:max-w-[800px]"><?php echo $content; ?></h1>
                             <?php endif; ?>
                         </div>
                         <div class="flex shrink-0 items-center gap-4">

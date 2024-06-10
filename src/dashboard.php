@@ -147,16 +147,16 @@ $current_time = time();
                                                 <form method="POST" action="">
                                                     <input type="hidden" name="phrase_id" value="<?php echo $phrase['id']; ?>">
                                                     <button type="submit" name="make_public" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
-                                                        <i data-lucide="globe" class="size-4"></i>
-                                                        <span class="flex items-center gap-1 text-sm font-medium">Make Public</span>
+                                                        <i data-lucide="eye" class="size-4"></i>
+                                                        <span class="flex items-center gap-1 text-sm font-medium">Show Phrase</span>
                                                     </button>
                                                 </form>
                                             <?php elseif ($phrase['visibility'] == '1') : ?>
                                                 <form method="POST" action="">
                                                     <input type="hidden" name="phrase_id" value="<?php echo $phrase['id']; ?>">
                                                     <button type="submit" name="make_private" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
-                                                        <i data-lucide="globe" class="size-4"></i>
-                                                        <span class="flex items-center gap-1 text-sm font-medium">Make Private</span>
+                                                        <i data-lucide="eye-off" class="size-4"></i>
+                                                        <span class="flex items-center gap-1 text-sm font-medium">Hide Phrase</span>
                                                     </button>
                                                 </form>
                                             <?php endif; ?>
