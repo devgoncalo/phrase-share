@@ -95,9 +95,25 @@ if ($visibility_type == "automatic") {
                         </div>
                         <div class="flex shrink-0 items-center gap-4">
                             <nav class="mx-auto w-full max-w-[200px] space-y-2">
-                                <button class="flex w-full max-w-[300px] items-center justify-between rounded-md border border-neutral-800 bg-neutral-900 p-2.5 outline-none focus-visible:ring-2 focus-visible:ring-neutral-700" tabindex="0">
+                                <button id="share-btn" class="flex w-full max-w-[300px] items-center justify-between rounded-md border border-neutral-800 bg-neutral-900 p-2.5 outline-none focus-visible:ring-2 focus-visible:ring-neutral-700" tabindex="0">
                                     <i data-lucide="external-link" class="size-4"></i>
                                 </button>
+                                <div id="dropdown-menu" class="hidden origin-top-right mt-1 absolute right-[9.75rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
+                                    <div class="flex flex-col gap-0.5 my-1" role="menu">
+                                        <a href="https://api.whatsapp.com/send?text=<?php echo urlencode($phrase['title'] . ' ' . $public_url); ?>" target="_blank" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
+                                            <i data-lucide="message-circle" class="size-4"></i>
+                                            <span class="flex items-center gap-0.5 text-sm font-medium">WhatsApp</span>
+                                        </a>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($public_url); ?>" target="_blank" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
+                                            <i data-lucide="facebook" class="size-4"></i>
+                                            <span class="flex items-center gap-0.5 text-sm font-medium">Facebook</span>
+                                        </a>
+                                        <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode($public_url); ?>&text=<?php echo urlencode($phrase['title']); ?>" target="_blank" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
+                                            <i data-lucide="twitter" class="size-4"></i>
+                                            <span class="flex items-center gap-1 text-sm font-medium">Twitter</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </nav>
                         </div>
                     </div>
@@ -184,6 +200,19 @@ if ($visibility_type == "automatic") {
         const remainingTime = <?php echo $remaining_time; ?>;
 
         startCountdown(remainingTime);
+
+        const shareBtn = document.getElementById("share-btn");
+        const dropdownMenu = document.getElementById("dropdown-menu");
+
+        shareBtn.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!shareBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
     </script>
 </body>
 
