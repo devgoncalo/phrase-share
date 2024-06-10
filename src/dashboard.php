@@ -127,14 +127,18 @@ $current_time = time();
                             <tr>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 py-3 text-sm"><?php echo $phrase['title']; ?></td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-sm"><?php echo $phrase['content']; ?></td>
-                                <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-sm"><?php echo $phrase['creation_time']; ?></td>
-                                <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-xs text-center text-sm"><?php if ($phrase['visibility'] == '1') echo 'Public';
-                                                                                                                                    else echo 'Private'; ?></td>
+                                <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-sm"><?php echo date('Y-m-d H:i:s', strtotime($phrase['creation_time'] . ' +2 hours')); ?></td>
+                                <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-xs text-center text-sm">
+                                    <?php if ($phrase['visibility'] == '1') : ?>
+                                        <?php echo 'Public'; ?>
+                                    <?php else : ?>
+                                        <?php echo 'Private'; ?>
+                                    <?php endif; ?>
+                                </td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-center text-sm">
                                     <button id="dropdownButton_<?php echo $phrase['id']; ?>" type="button" class="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded border border-none bg-transparent align-middle text-neutral-400 transition duration-200 ease-in-out hover:bg-neutral-700 focus-visible:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-600 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400" aria-label="More actions">
                                         <i data-lucide="ellipsis" class="size-4"></i>
                                     </button>
-
                                     <div id="dropdownMenu_<?php echo $phrase['id']; ?>" class="hidden origin-top-right mt-1 absolute right-[9.75rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
                                         <div class="flex flex-col gap-1 my-1">
                                             <?php if ($current_time <= strtotime($phrase['creation_time']) + (5 * 60)) : ?>

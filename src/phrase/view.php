@@ -122,7 +122,7 @@ if ($visibility_type == "automatic") {
                             <label class="text-xs uppercase text-neutral-400">Created</label>
                             <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                                 <time class="group-focus-visible:border-b group-focus-visible:border-neutral-700">
-                                    <?php echo $phrase["creation_time"]; ?>
+                                    <?php echo date('Y-m-d H:i:s', strtotime($phrase['creation_time'] . ' +2 hours')); ?>
                                 </time>
                             </p>
                         </div>
