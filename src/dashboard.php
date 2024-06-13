@@ -118,6 +118,7 @@ $current_time = time();
                             <th class="h-8 w-[250px] border-b border-t border-neutral-700 px-3 text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Title</th>
                             <th class="h-8 w-[250px] border-b border-t border-neutral-700 px-3 text-left text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Content</th>
                             <th class="h-8 w-[210px] border-b border-t border-neutral-700 px-3 text-right text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Creation Date</th>
+                            <th class="h-8 w-[100px] border-b border-t border-neutral-700 px-3 text-right text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Status</th>
                             <th class="h-8 w-[100px] border-b border-t border-neutral-700 px-3 text-right text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Visibility</th>
                             <th class="h-8 border-b border-t border-neutral-700 px-3 text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r"></th>
                         </tr>
@@ -133,6 +134,13 @@ $current_time = time();
                                         <?php echo 'Public'; ?>
                                     <?php else : ?>
                                         <?php echo 'Private'; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-xs text-center text-sm">
+                                    <?php if ($phrase['visibility_type'] == "automatic") : ?>
+                                        <?php echo 'Automatic'; ?>
+                                    <?php elseif ($phrase['visibility_type'] == "manual") : ?>
+                                        <?php echo 'Manual'; ?>
                                     <?php endif; ?>
                                 </td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-center text-sm">
