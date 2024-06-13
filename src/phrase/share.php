@@ -59,9 +59,8 @@ $public_url = "http://localhost:8000/src/phrase/view.php?id=$phrase_id";
                         </div>
                     <?php endif; ?>
                         <div class="flex flex-row gap-2">
-                            <button id="generateLinkBtn" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 p-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800 dark:bg-neutral-300 dark:text-neutral-100">
-                                <span id="generateText">Generate Link</span>
-                                <span id="loadingSpinner" class="hidden ">Loading...</span>
+                            <button id="generateLoading" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 p-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800 dark:bg-neutral-300 dark:text-neutral-100">
+                                <span>Loading...</span>
                             </button>
                             <a id="seePhraseLink" class="hidden inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md p-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800 dark:bg-neutral-300 dark:text-neutral-100">
                                 See Your Phrase
@@ -73,20 +72,16 @@ $public_url = "http://localhost:8000/src/phrase/view.php?id=$phrase_id";
         <script>
             lucide.createIcons();
 
-            const generateLinkBtn = document.getElementById('generateLinkBtn');
-            const generateText = document.getElementById('generateText');
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            const titleInput = document.getElementById('title');
-            const seePhraseLink = document.getElementById('seePhraseLink');
+            window.addEventListener('load', () => {
+                const generateLoading  = document.getElementById('generateLoading');
+                const titleInput = document.getElementById('title');
+                const seePhraseLink = document.getElementById('seePhraseLink');
 
-            generateLinkBtn.addEventListener('click', () => {
-                generateText.classList.add('hidden');
-                loadingSpinner.classList.remove('hidden');
+                generateLoading.classList.remove('hidden');
 
                 setTimeout(() => {
                     titleInput.value = '<?php echo $public_url; ?>';
-                    loadingSpinner.classList.add('hidden');
-                    generateText.classList.remove('hidden');
+                    generateLoading.classList.add('hidden');
                     seePhraseLink.classList.remove('hidden');
                     seePhraseLink.href = '<?php echo $public_url; ?>';
                 }, 2000);
