@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </a>
         <div class="flex min-h-screen w-full flex-col items-center justify-center">
             <div class="flex w-full max-w-[488px] flex-col items-center justify-center gap-y-6 rounded-xl p-12 text-neutral-100 md:justify-start">
-                <div class="flex w-full items-start ">
+                <div class="flex w-full items-start">
                     <div class="rounded-xl shadow-sm border-2 border-neutral-700 p-2">
                         <i data-lucide="link" class="size-5"></i>
                     </div>

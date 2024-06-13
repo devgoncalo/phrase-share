@@ -174,32 +174,36 @@ if ($visibility_type == "automatic") {
     <script>
         lucide.createIcons();
 
-        function startCountdown(duration) {
-            let timer = duration,
-                hours, minutes, seconds;
-            const display = document.getElementById('time-remaining');
+        <?php if ($visibility_type == "automatic") { ?>
 
-            const interval = setInterval(function() {
-                hours = Math.floor(timer / 3600);
-                minutes = Math.floor((timer % 3600) / 60);
-                seconds = Math.floor(timer % 60);
+            function startCountdown(duration) {
+                let timer = duration,
+                    hours, minutes, seconds;
+                const display = document.getElementById('time-remaining');
 
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
+                const interval = setInterval(function() {
+                    hours = Math.floor(timer / 3600);
+                    minutes = Math.floor((timer % 3600) / 60);
+                    seconds = Math.floor(timer % 60);
 
-                display.textContent = hours + ":" + minutes + ":" + seconds;
+                    hours = hours < 10 ? "0" + hours : hours;
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                if (--timer < 0) {
-                    clearInterval(interval);
-                    window.location.reload();
-                }
-            }, 1000);
-        }
+                    display.textContent = hours + ":" + minutes + ":" + seconds;
 
-        const remainingTime = <?php echo $remaining_time; ?>;
+                    if (--timer < 0) {
+                        clearInterval(interval);
+                        window.location.reload();
+                    }
+                }, 1000);
+            }
 
-        startCountdown(remainingTime);
+            const remainingTime = <?php echo $remaining_time; ?>;
+
+            startCountdown(remainingTime);
+            
+        <?php } ?>
 
         const shareBtn = document.getElementById("share-btn");
         const dropdownMenu = document.getElementById("dropdown-menu");

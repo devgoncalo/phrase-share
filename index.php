@@ -30,7 +30,7 @@
                         <a href="src/auth/login.php" class="sm:w-1/2 sm:text-center inline-block space-x-2 rounded px-4 py-1.5 md:py-2 text-base font-semibold leading-7 text-white ring-1 ring-neutral-600 hover:bg-white hover:text-neutral-900 duration-150 hover:ring-white hover:drop-shadow-cta outline-none focus-visible:ring-2 focus-visible:ring-neutral-100/30">
                             Login
                         </a>
-                        <a href="src/auth/register.php" class="sm:w-1/2 sm:text-center inline-block transition-all space-x-2 rounded px-4 py-1.5 md:py-2 text-base font-semibold leading-7 text-neutral-800 bg-neutral-50 ring-1 ring-transparent hover:text-neutral-100 hover:ring-neutral-600/80 hover:bg-neutral-900/20 duration-150 hover:drop-shadow-cta outline-none">
+                        <a href="src/auth/register.php" class="sm:w-1/2 sm:text-center inline-block transition-all space-x-2 rounded px-4 py-1.5 md:py-2 text-base font-semibold leading-7 text-neutral-800 bg-neutral-50 ring-1 ring-transparent hover:text-neutral-100 hover:ring-neutral-600/80 hover:bg-neutral-900/20 duration-150 hover:drop-shadow-cta outline-none focus-visible:ring-2 focus-visible:ring-neutral-200">
                             <span>Register</span><span aria-hidden="true">→</span>
                         </a>
                     </div>

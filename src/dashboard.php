@@ -117,9 +117,9 @@ $current_time = time();
                         <tr>
                             <th class="h-8 w-[250px] border-b border-t border-neutral-700 px-3 text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Title</th>
                             <th class="h-8 w-[250px] border-b border-t border-neutral-700 px-3 text-left text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Content</th>
-                            <th class="h-8 w-[206px] border-b border-t border-neutral-700 px-3 text-right text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Creation Date</th>
+                            <th class="h-8 w-[210px] border-b border-t border-neutral-700 px-3 text-right text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Creation Date</th>
                             <th class="h-8 w-[100px] border-b border-t border-neutral-700 px-3 text-right text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r">Visibility</th>
-                            <th class="h-8 w-[70px] border-b border-t border-neutral-700 px-3 text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r"></th>
+                            <th class="h-8 border-b border-t border-neutral-700 px-3 text-xs font-semibold text-neutral-400 first:rounded-l-md first:border-l last:rounded-r-md last:border-r"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -139,41 +139,41 @@ $current_time = time();
                                     <button id="dropdownButton_<?php echo $phrase['id']; ?>" type="button" class="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded border border-none bg-transparent align-middle text-neutral-400 transition duration-200 ease-in-out hover:bg-neutral-700 focus-visible:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-600 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400" aria-label="More actions">
                                         <i data-lucide="ellipsis" class="size-4"></i>
                                     </button>
-                                    <div id="dropdownMenu_<?php echo $phrase['id']; ?>" class="hidden origin-top-right mt-1 absolute right-[9.75rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
+                                    <div id="dropdownMenu_<?php echo $phrase['id']; ?>" class="hidden origin-top-right mt-1 absolute right-[8.75rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
                                         <div class="flex flex-col gap-1 my-1">
                                             <?php if ($current_time <= strtotime($phrase['creation_time']) + (5 * 60)) : ?>
-                                                <a href="phrase/edit.php?id=<?php echo $phrase['id']; ?>" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
+                                                <a href="phrase/edit.php?id=<?php echo $phrase['id']; ?>" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:border-neutral-600 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
                                                     <i data-lucide="pencil" class="size-4"></i>
                                                     <span class="flex items-center gap-1 text-sm font-medium">Edit Phrase</span>
                                                 </a>
                                             <?php endif; ?>
                                             <?php if ($phrase['visibility'] == '0') : ?>
-                                                <form method="POST" action="">
+                                                <form method="POST">
                                                     <input type="hidden" name="phrase_id" value="<?php echo $phrase['id']; ?>">
-                                                    <button type="submit" name="make_public" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
+                                                    <button type="submit" name="make_public" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:border-neutral-600 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
                                                         <i data-lucide="eye" class="size-4"></i>
                                                         <span class="flex items-center gap-1 text-sm font-medium">Show Phrase</span>
                                                     </button>
                                                 </form>
                                             <?php elseif ($phrase['visibility'] == '1') : ?>
-                                                <form method="POST" action="">
+                                                <form method="POST">
                                                     <input type="hidden" name="phrase_id" value="<?php echo $phrase['id']; ?>">
-                                                    <button type="submit" name="make_private" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
+                                                    <button type="submit" name="make_private" class="flex items-center gap-2 rounded-sm border border-transparent px-1 pl-auto text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:border-neutral-600 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
                                                         <i data-lucide="eye-off" class="size-4"></i>
-                                                        <span class="flex items-center gap-1 text-sm font-medium">Hide Phrase</span>
+                                                        <span class="flex items-center gap-1 text-sm font-medium mr-3">Hide Phrase</span>
                                                     </button>
                                                 </form>
                                             <?php endif; ?>
-                                            <a href="phrase/share.php?id=<?php echo $phrase['id']; ?>" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
+                                            <a href="phrase/share.php?id=<?php echo $phrase['id']; ?>" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:border-neutral-600 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
                                                 <i data-lucide="link" class="size-4"></i>
                                                 <span class="flex items-center gap-1 text-sm font-medium">Share Phrase</span>
                                             </a>
                                             <form method="POST" onsubmit="return confirm('Are you sure you want to delete this phrase?')">
-                                                <div class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-red-500 hover:bg-red-500/10 focus-visible:border-red-500/10 focus-visible:bg-red-500/10 focus-visible:text-red-500 focus-visible:outline-none">
+                                                <input type="hidden" name="phrase_id" value="<?php echo $phrase['id']; ?>">
+                                                <button type="submit" name="delete_phrase" role="menuitem" class="flex gap-2 px-1 items-center rounded-sm border border-transparent text-red-500 hover:bg-red-500/10 focus-visible:border-red-500/10 focus-visible:bg-red-500/10 focus-visible:text-red-500 focus-visible:outline-none">
                                                     <i data-lucide="trash" class="size-4"></i>
-                                                    <input type="hidden" name="phrase_id" value="<?php echo $phrase['id']; ?>">
-                                                    <button type="submit" name="delete_phrase" role=" menuitem">Delete Phrase</button>
-                                                </div>
+                                                    Delete Phrase
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
