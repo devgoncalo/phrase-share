@@ -5,7 +5,7 @@ $errors = [];
 
 session_start();
 
-if(isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
     header('Location: ../dashboard.php');
     exit();
 }
@@ -113,8 +113,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                     <?php if (!empty($errors)) : ?>
-                        <div class="flex w-full flex-col items-start text-red-500 text-xs" role="alert">
+                        <div class="flex w-full flex-row gap-1 items-center text-red-500 text-xs" role="alert">
                             <?php foreach ($errors as $error) : ?>
+                                <i data-lucide="ban" class="size-3"></i>
                                 <p><?php echo $error; ?></p>
                             <?php endforeach; ?>
                         </div>

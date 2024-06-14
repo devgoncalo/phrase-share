@@ -90,7 +90,7 @@ $current_time = time();
                 <a href="auth/logout.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md pl-3 pr-3 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400 dark:bg-white dark:text-black dark:hover:bg-white/90 dark:focus-visible:bg-white/90 dark:focus-visible:ring-white/40 dark:disabled:hover:bg-white">
                     <span class="inline-flex flex-row items-center gap-2">
                         <i data-lucide="log-out" class="size-4"></i>
-                        Log Out
+                        <span class="hidden md:flex">Log Out</span>
                     </span>
                 </a>
             </div>

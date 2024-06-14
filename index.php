@@ -10,7 +10,7 @@
 </head>
 
 <body class="min-h-screen bg-black bg-gradient-to-tr from-neutral-900/50 to-neutral-700/30 overflow-hidden">
-    <main class=" min-h-[80vh] ">
+    <main class="min-h-[100vh] mt-[10rem] md:mt-0">
         <div class="flex flex-col gap-8 pb-8 md:gap-16 md:pb-16 xl:pb-24">
             <div class="flex flex-col items-center justify-center max-w-3xl px-8 mx-auto mt-8 sm:min-h-screen sm:mt-0 sm:px-0">
                 <div class="hidden sm:mb-8 sm:flex sm:justify-center">
