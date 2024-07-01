@@ -1,10 +1,16 @@
 <?php
 include "../database/connection.php";
+include '../translations.php';
+
+session_start();
 
 if (!isset($_GET["id"])) {
     header("Location: ../dashboard.php");
     exit();
 }
+
+$language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
+$trans = $translations[$language] ?? $translations['en'];
 
 $phrase_id = $_GET["id"];
 
@@ -30,7 +36,7 @@ if ($visibility_type == "manual") {
     if ($visibility == "1") {
         $content = $phrase["content"];
     } else {
-        $content = "The writer didn't publish the phrase yet.";
+        $content = $trans['view_phrase_not_published'];
     }
 }
 
@@ -41,7 +47,7 @@ if ($visibility_type == "automatic") {
 
     if ($current_time < $show_time) {
         $content =
-            "The phrase is not yet published. Time remaining: " .
+            $trans['view_phrase_not_yet_published'] .
             gmdate("H:i:s", $remaining_time) .
             ".";
     } else {
@@ -51,12 +57,12 @@ if ($visibility_type == "automatic") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo htmlspecialchars($language); ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhraseShare · View</title>
+    <title>PhraseShare · <?php echo htmlspecialchars($trans['view_page_title']) ?></title>
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -66,12 +72,12 @@ if ($visibility_type == "automatic") {
     <div class="container mx-auto py-8">
         <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-8">
             <h1 class="text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100">
-                View Phrase
+                <?php echo $trans['view_page_title']; ?>
             </h1>
-            <a href="../dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400 dark:bg-white dark:text-black dark:hover:bg-white/90 dark:focus-visible:bg-white/90 dark:focus-visible:ring-white/40 dark:disabled:hover:bg-white">
+            <a href="../dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                 <span class="inline-flex flex-row items-center gap-2">
                     <i data-lucide="arrow-left" class="size-4"></i>
-                    Go Back
+                    <?php echo $trans['general_go_back']; ?>
                 </span>
             </a>
         </div>
@@ -88,7 +94,7 @@ if ($visibility_type == "automatic") {
                             <?php elseif ($visibility_type == "manual" && $visibility == "1") : ?>
                                 <h1 class="w-full truncate text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100 md:max-w-[800px]"><?php echo $content; ?></h1>
                             <?php elseif ($visibility_type == "automatic" && $current_time < $show_time) : ?>
-                                <p class="text-red-500">The phrase is not yet published. Time remaining: <span id="time-remaining"><?php echo gmdate("H:i:s", $remaining_time); ?></span>.</p>
+                                <p class="text-red-500"><?php echo htmlspecialchars($trans['view_phrase_not_yet_published']) ?><span id="time-remaining"><?php echo gmdate("H:i:s", $remaining_time); ?></span>.</p>
                             <?php else : ?>
                                 <h1 class="w-full truncate text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100 md:max-w-[800px]"><?php echo $content; ?></h1>
                             <?php endif; ?>
@@ -119,14 +125,14 @@ if ($visibility_type == "automatic") {
                     </div>
                     <div class="mt-8 flex w-full flex-wrap">
                         <div class="flex basis-1/4 flex-col gap-1">
-                            <label class="text-xs uppercase text-neutral-400">Created</label>
+                            <label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_created_label']; ?></label>
                             <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                                 <time class="group-focus-visible:border-b group-focus-visible:border-neutral-700">
                                     <?php echo date('Y-m-d H:i:s', strtotime($phrase['creation_time'] . ' +2 hours')); ?>
                                 </time>
                             </p>
                         </div>
-                        <div class="flex basis-1/4 flex-col gap-1"><label class="text-xs uppercase text-neutral-400">Visibility</label>
+                        <div class="flex basis-1/4 flex-col gap-1"><label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_visibility_label']; ?></label>
                             <div class="flex items-center gap-2">
                                 <?php if (
                                     $visibility == "1" &&
@@ -134,21 +140,21 @@ if ($visibility_type == "automatic") {
                                     $remaining_time > 0
                                 ) : ?>
                                     <span class="inline-flex h-6 select-none items-center whitespace-nowrap rounded px-2 text-xs font-medium capitalize bg-blue-700/20 text-blue-500">
-                                        Waiting publishing
+                                        <?php echo $trans['view_status_waiting']; ?>
                                     </span>
                                 <?php elseif ($visibility == "1") : ?>
                                     <span class="inline-flex h-6 select-none items-center whitespace-nowrap rounded px-2 text-xs font-medium capitalize bg-green-700/20 text-green-500">
-                                        Published
+                                        <?php echo $trans['view_status_public']; ?>
                                     </span>
                                 <?php elseif ($visibility == "0") : ?>
                                     <span class="inline-flex h-6 select-none items-center whitespace-nowrap rounded px-2 text-xs font-medium capitalize bg-red-700/20 text-red-500">
-                                        Private
+                                        <?php echo $trans['view_status_private']; ?>
                                     </span>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="flex basis-1/4 flex-col gap-1">
-                            <label class="text-xs uppercase text-neutral-400">Visibility type</label>
+                            <label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_visibility_type_label']; ?></label>
                             <button class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                                 <span class="inline-flex h-6 select-none items-center whitespace-nowrap rounded bg-neutral-900 px-2 text-xs font-medium text-neutral-400 group-focus-visible:ring-2 group-focus-visible:ring-neutral-700">
                                     <?php if (
@@ -161,7 +167,7 @@ if ($visibility_type == "automatic") {
                                 </span>
                             </button>
                         </div>
-                        <div class="flex basis-1/4 flex-col gap-1"><label class="text-xs uppercase text-neutral-400">Written by</label>
+                        <div class="flex basis-1/4 flex-col gap-1"><label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_written_by_label']; ?></label>
                             <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                                 <?php echo $user["username"]; ?>
                             </p>
@@ -202,7 +208,7 @@ if ($visibility_type == "automatic") {
             const remainingTime = <?php echo $remaining_time; ?>;
 
             startCountdown(remainingTime);
-            
+
         <?php } ?>
 
         const shareBtn = document.getElementById("share-btn");

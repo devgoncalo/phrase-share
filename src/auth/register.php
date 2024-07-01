@@ -1,9 +1,17 @@
 <?php
 include '../database/connection.php';
+include '../translations.php';
 
 $errors = [];
 
 session_start();
+
+if (isset($_GET['lang'])) {
+    $_SESSION['language'] = $_GET['lang'];
+}
+
+$language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
+$trans = $translations[$language] ?? $translations['en'];
 
 if (isset($_SESSION['user_id'])) {
     header('Location: ../dashboard.php');
@@ -40,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $language = $_SESSION['language'];
 
         $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
@@ -48,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($emailExists) {
             $errors[] = "An account with this email already exists.";
         } else {
-            $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
-            $stmt->execute(['username' => $username, 'email' => $email, 'password' => $password]);
+            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, language) VALUES (:username, :email, :password, :language)");
+            $stmt->execute(['username' => $username, 'email' => $email, 'password' => $password, 'language' => $language]);
 
             header('Location: login.php');
             exit();
@@ -59,12 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo htmlspecialchars($language); ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhraseShare · Registration</title>
+    <title>PhraseShare · <?php echo htmlspecialchars($trans['register_page_title']); ?></title>
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -83,10 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
                 <div class="flex w-full flex-col justify-start gap-y-1">
-                    <h1 class="text-lg font-[500] tracking-tight antialiased">First time here?</h1>
-                    <p class="text-xs font-[400] tracking-tight text-neutral-400 antialiased">
-                        By signing up, you agree to our <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" target="_blank" href="/legal/terms-of-service">terms</a>, and <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" target="_blank" href="/legal/privacy-policy">privacy policy</a>.
-                    </p>
+                    <h1 class="text-lg font-[500] tracking-tight antialiased"><?php echo htmlspecialchars($trans['register_welcome']); ?></h1>
+                    <p class="text-xs font-[400] tracking-tight text-neutral-400 antialiased"><?php echo htmlspecialchars($trans['register_information']); ?> <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" target="_blank" href="/legal/terms-of-service"><?php echo htmlspecialchars($trans['register_terms']); ?></a>, & <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" target="_blank" href="/legal/privacy-policy"><?php echo htmlspecialchars($trans['register_privacy']); ?></a>.</p>
                 </div>
                 <form method="post" action="register.php" class="flex w-full flex-col items-center justify-center gap-y-6">
                     <div class="flex w-full flex-col justify-center gap-y-4">
@@ -122,16 +129,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php endif; ?>
                     <div class="flex w-full flex-col items-center justify-center gap-y-2">
                         <button type="submit" class="ring-offset-background text-neutral-900 inline-flex h-10 w-full items-center justify-center gap-x-1 whitespace-nowrap rounded-lg border border-neutral-700 bg-neutral-100 px-4 py-2 text-sm font-medium antialiased shadow-sm transition-colors focus-within:border-2 focus-within:border-[#1e1e20] focus-within:ring-2 focus-within:ring-neutral-700 hover:bg-neutral-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50">
-                            Sign Up
+                            <?php echo htmlspecialchars($trans['register_submit']); ?>
                         </button>
                     </div>
                 </form>
                 <div class="flex w-full flex-row items-center justify-start gap-x-2">
                     <span class="text-xs font-[400] leading-tight text-neutral-400 antialiased">
-                        Already have an account?
+                        <?php echo htmlspecialchars($trans['register_no_account']); ?>
                     </span>
                     <a href="login.php" class="inline-flex h-7 items-center justify-center gap-x-1 whitespace-nowrap rounded-md border-[0.5px] border-black bg-[#262628] px-2 py-0.5 text-xs font-medium text-neutral-100 shadow-sm transition-colors focus-within:ring-2 focus-within:ring-neutral-700 hover:bg-[#2c2c2e] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50">
-                        Sign In
+                        <?php echo htmlspecialchars($trans['register_login']); ?>
                     </a>
                 </div>
             </div>

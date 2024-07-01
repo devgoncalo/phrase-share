@@ -1,9 +1,17 @@
 <?php
 include '../database/connection.php';
+include '../translations.php';
 
 $errors = [];
 
 session_start();
+
+if (isset($_GET['lang'])) {
+    $_SESSION['language'] = $_GET['lang'];
+}
+
+$language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
+$trans = $translations[$language] ?? $translations['en'];
 
 if (isset($_SESSION['user_id'])) {
     header('Location: ../dashboard.php');
@@ -44,12 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo htmlspecialchars($language); ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhraseShare · Login</title>
+    <title>PhraseShare · <?php echo htmlspecialchars($trans['login_page_title']); ?></title>
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -68,10 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
                 <div class="flex w-full flex-col justify-start gap-y-1">
-                    <h1 class="text-lg font-[500] tracking-tight antialiased">Welcome back!</h1>
-                    <p class="text-xs font-[400] tracking-tight text-neutral-400 antialiased">
-                        By signing in, you agree to our <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" target="_blank" href="/legal/terms-of-service">terms</a>, and <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" target="_blank" href="/legal/privacy-policy">privacy policy</a>.
-                    </p>
+                    <h1 class="text-lg font-[500] tracking-tight antialiased"><?php echo htmlspecialchars($trans['login_welcome']); ?></h1>
+                    <p class="text-xs font-[400] tracking-tight text-neutral-400 antialiased"><?php echo htmlspecialchars($trans['login_information']); ?> <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" target="_blank" href="/legal/terms-of-service"><?php echo htmlspecialchars($trans['login_terms']); ?></a>, & <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" target="_blank" href="/legal/privacy-policy"><?php echo htmlspecialchars($trans['login_privacy']); ?></a>.</p>
                 </div>
                 <form method="post" action="login.php" class="flex w-full flex-col items-center justify-center gap-y-6">
                     <div class="flex w-full flex-col justify-center gap-y-4">
@@ -100,16 +106,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php endif; ?>
                     <div class="flex w-full flex-col items-center justify-center gap-y-2">
                         <button type="submit" class="ring-offset-background text-neutral-900 inline-flex h-10 w-full items-center justify-center gap-x-1 whitespace-nowrap rounded-lg border border-neutral-700 bg-neutral-100 px-4 py-2 text-sm font-medium antialiased shadow-sm transition-colors focus-within:border-2 focus-within:border-[#1e1e20] focus-within:ring-2 focus-within:ring-neutral-700 hover:bg-neutral-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50">
-                            Log In
+                            <?php echo htmlspecialchars($trans['login_submit']); ?>
                         </button>
                     </div>
                 </form>
                 <div class="flex w-full flex-row items-center justify-start gap-x-2">
                     <span class="text-xs font-[400] leading-tight text-neutral-400 antialiased">
-                        Don't have an account?
+                        <?php echo htmlspecialchars($trans['login_no_account']); ?>
                     </span>
                     <a href="register.php" class="inline-flex h-7 items-center justify-center gap-x-1 whitespace-nowrap rounded-md border-[0.5px] border-black bg-[#262628] px-2 py-0.5 text-xs font-medium text-neutral-100 shadow-sm transition-colors focus-within:ring-2 focus-within:ring-neutral-700 hover:bg-[#2c2c2e] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50">
-                        Sign Up
+                        <?php echo htmlspecialchars($trans['login_register']); ?>
                     </a>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <?php
 include '../database/connection.php';
+include '../translations.php';
 
 $errors = [];
 
@@ -9,6 +10,9 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: auth/login.php');
     exit();
 }
+
+$language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
+$trans = $translations[$language] ?? $translations['en'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION['user_id'])) {
@@ -25,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $show_time = ($_POST['visibility_type'] == 'automatic') ? date('Y-m-d H:i:s', strtotime($_POST['show_time'])) : null;
 
     if (strlen($content) > 56) {
-        $errors[] = "Phrase content must not exceed 56 characters.";
+        $errors[] = $trans['create_content_length_error'];
     } else {
         try {
             $stmt = $pdo->prepare("INSERT INTO phrases (user_id, title, content, visibility_type, visibility, show_time) VALUES (:user_id, :title, :content, :visibility_type, :visibility, :show_time)");
@@ -41,12 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo htmlspecialchars($language); ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhraseShare · Create</title>
+    <title>PhraseShare · <?php echo htmlspecialchars($trans['create_page_title']) ?></title>
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -56,12 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container mx-auto py-8">
         <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-8">
             <h1 class="text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100">
-                Create Phrase
+                <?php echo htmlspecialchars($trans['create_page_title']); ?>
             </h1>
-            <a href="../dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400 dark:bg-white dark:text-black dark:hover:bg-white/90 dark:focus-visible:bg-white/90 dark:focus-visible:ring-white/40 dark:disabled:hover:bg-white">
+            <a href="../dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                 <span class="inline-flex flex-row items-center gap-2">
                     <i data-lucide="arrow-left" class="size-4"></i>
-                    Go Back
+                    <?php echo htmlspecialchars($trans['general_go_back']); ?>
                 </span>
             </a>
         </div>
@@ -70,32 +74,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form class="flex flex-col gap-6" method="post" action="">
                 <div class="space-y-2">
                     <div class="flex justify-between">
-                        <label for="title" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400">Phrase Title:</label>
+                        <label for="title" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_title_label']); ?></label>
 
-                        <button type="button" id="generate-ai" class="inline-flex cursor-pointer select-none text-sm text-white transition duration-200 ease-in-out focus-visible:bg-neutral-800 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800 dark:bg-neutral-300 dark:text-neutral-100">
+                        <button type="button" id="generate-ai" class="inline-flex cursor-pointer select-none text-sm text-white transition duration-200 ease-in-out focus-visible:bg-neutral-800 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800">
                             <div class="flex items-center gap-1">
                                 <i data-lucide="sparkles" class="size-4"></i>
-                                <span id="generate-text">Write with Artificial Intelligence</span>
-                                <span id="loading-text" class="hidden">Generating...</span>
+                                <span id="generate-text"><?php echo htmlspecialchars($trans['create_write_ai']); ?></span>
+                                <span id="loading-text" class="hidden"><?php echo htmlspecialchars($trans['create_write_generating']); ?></span>
                             </div>
                         </button>
                     </div>
                     <input type="text" id="title" name="title" class="flex w-full rounded-md py-2 text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-8 border border-neutral-700 bg-neutral-900 px-2 text-neutral-100 transition duration-200 ease-in-out placeholder:text-neutral-500">
                 </div>
                 <div class="space-y-2">
-                    <label for="content" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400">Phrase Content:</label>
+                    <label for="content" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_content_label']); ?></label>
                     <textarea id="content" name="content" class="flex w-full rounded-md py-2 text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-32 border border-neutral-700 bg-neutral-900 px-2 text-neutral-100 transition duration-200 ease-in-out placeholder:text-neutral-500 resize-none"></textarea>
                 </div>
                 <div class="space-y-2">
-                    <label for="visibility_type" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400">Visibility:</label>
+                    <label for="visibility_type" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_visibility_label']); ?></label>
                     <select id="visibility_type" name="visibility_type" class="flex w-full rounded-md text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-8 border border-neutral-700 bg-neutral-900 px-2 text-neutral-100 transition duration-200 ease-in-out placeholder:text-neutral-500">
                         <option value="" selected disabled></option>
-                        <option value="automatic">Show automatically</option>
-                        <option value="manual">Decide manually</option>
+                        <option value="automatic"><?php echo htmlspecialchars($trans['create_visibility_option_auto']); ?></option>
+                        <option value="manual"><?php echo htmlspecialchars($trans['create_visibility_option_manual']); ?></option>
                     </select>
                 </div>
                 <div id="show-time-input" class="space-y-2 hidden">
-                    <label for="show_time" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400">What time should the phrase be shown?</label>
+                    <label for="show_time" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_show_time_label']); ?></label>
                     <input type="datetime-local" id="show_time" name="show_time" class="flex w-full rounded-md py-2 text-sm outline-none ring-offset-background text-neutral-100 focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-8 border border-neutral-700 bg-neutral-900 px-2 transition duration-200 ease-in-out">
                 </div>
                 <?php if (!empty($errors)) : ?>
@@ -107,11 +111,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 <?php endif; ?>
                 <div class="flex flex-row gap-2">
-                    <button type="submit" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 p-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800 dark:bg-neutral-300 dark:text-neutral-100">
-                        Create
+                    <button type="submit" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 p-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800">
+                        <?php echo htmlspecialchars($trans['create_create_button']); ?>
                     </button>
-                    <a href="../dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md p-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800 dark:bg-neutral-300 dark:text-neutral-100">
-                        Cancel
+                    <a href="../dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md p-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800">
+                        <?php echo htmlspecialchars($trans['create_cancel_button']); ?>
                     </a>
                 </div>
             </form>
