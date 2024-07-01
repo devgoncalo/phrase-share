@@ -28,7 +28,7 @@ if (!$phrase) {
     exit();
 }
 
-$public_url = "http://localhost:8000/src/phrase/view.php?id=$phrase_id";
+$public_url = "http://localhost:8000/src/phrase/view.php?id=$phrase_id&lang=$language";
 ?>
 
 <!DOCTYPE html>

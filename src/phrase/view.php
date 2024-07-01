@@ -9,8 +9,8 @@ if (!isset($_GET["id"])) {
     exit();
 }
 
-$language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
-$trans = $translations[$language] ?? $translations['en'];
+$language = isset($_GET['lang']) ? $_GET['lang'] : (isset($_SESSION['language']) ? $_SESSION['language'] : 'en');
+$trans = $translations[$language] ?? $translations['en'];   
 
 $phrase_id = $_GET["id"];
 
@@ -74,12 +74,14 @@ if ($visibility_type == "automatic") {
             <h1 class="text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100">
                 <?php echo $trans['view_page_title']; ?>
             </h1>
-            <a href="../dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
+            <?php if (isset($_SESSION['user_id']) || isset($_SERVER['HTTP_REFERER'])) : ?>
+            <a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../dashboard.php'; ?>" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                 <span class="inline-flex flex-row items-center gap-2">
                     <i data-lucide="arrow-left" class="size-4"></i>
                     <?php echo $trans['general_go_back']; ?>
                 </span>
             </a>
+            <?php endif; ?>
         </div>
 
         <div class="mx-auto max-w-5xl px-6">
