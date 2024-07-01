@@ -86,6 +86,7 @@ $translations = [
         'create_cancel_button' => 'Cancel',
 
         'create_content_length_error' => 'Phrase content must not exceed 56 characters.',
+        'create_show_time_past_error' => 'The show time must be in the future.',
 
         // Edit Page
         'edit_page_title' => 'Edit Phrase',
@@ -208,6 +209,7 @@ $translations = [
         'create_cancel_button' => 'Annulla',
 
         'create_content_length_error' => 'Il contenuto della frase non deve superare i 56 caratteri.',
+        'create_show_time_past_error' => 'La data di visualizzazione deve essere nel futuro.',
 
         // Edit Page
         'edit_page_title' => 'Modifica Frase',
@@ -330,6 +332,7 @@ $translations = [
         'create_cancel_button' => 'Cancelar',
 
         'create_content_length_error' => 'O conteúdo da frase não pode exceder 56 caracteres.',
+        'create_show_time_past_error' => 'A data de visualização deve ser no futuro.',
 
         // Edit Page
         'edit_page_title' => 'Editar Frase',

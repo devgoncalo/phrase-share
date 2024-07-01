@@ -14,6 +14,9 @@ if (!isset($_SESSION['user_id'])) {
 $language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
 $trans = $translations[$language] ?? $translations['en'];
 
+$title = '';
+$content = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
@@ -28,7 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $visibility = ($_POST['visibility_type'] == 'automatic') ? 1 : 0;
     $show_time = ($_POST['visibility_type'] == 'automatic') ? date('Y-m-d H:i:s', strtotime($_POST['show_time'])) : null;
 
-    if (strlen($content) > 56) {
+    if ($visibility_type == 'automatic' && strtotime($show_time) < time()) {
+        $errors[] = $trans['create_show_time_past_error'];
+    } elseif (strlen($content) > 56) {
         $errors[] = $trans['create_content_length_error'];
     } else {
         try {
@@ -84,11 +89,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                         </button>
                     </div>
-                    <input type="text" id="title" name="title" class="flex w-full rounded-md py-2 text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-8 border border-neutral-700 bg-neutral-900 px-2 text-neutral-100 transition duration-200 ease-in-out placeholder:text-neutral-500">
+                    <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($title); ?>" class="flex w-full rounded-md py-2 text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-8 border border-neutral-700 bg-neutral-900 px-2 text-neutral-100 transition duration-200 ease-in-out placeholder:text-neutral-500">
                 </div>
                 <div class="space-y-2">
                     <label for="content" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_content_label']); ?></label>
-                    <textarea id="content" name="content" class="flex w-full rounded-md py-2 text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-32 border border-neutral-700 bg-neutral-900 px-2 text-neutral-100 transition duration-200 ease-in-out placeholder:text-neutral-500 resize-none"></textarea>
+                    <textarea id="content" name="content" class="flex w-full rounded-md py-2 text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-32 border border-neutral-700 bg-neutral-900 px-2 text-neutral-100 transition duration-200 ease-in-out placeholder:text-neutral-500 resize-none"><?php echo htmlspecialchars($content); ?></textarea>
                 </div>
                 <div class="space-y-2">
                     <label for="visibility_type" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_visibility_label']); ?></label>
