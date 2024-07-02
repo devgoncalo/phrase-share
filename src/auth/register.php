@@ -19,15 +19,16 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST['username'])) {
+    $username = $_POST['username'] ?? '';
+    $email = $_POST['email'] ?? '';
+
+    if (empty($username)) {
         $errors[] = "Username is required";
-    }
-    if (empty($_POST['email'])) {
+    } elseif (empty($email)) {
         $errors[] = "Email is required";
-    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Invalid email format";
-    }
-    if (empty($_POST['password'])) {
+    } elseif (empty($_POST['password'])) {
         $errors[] = "Password is required";
     } else {
         $password = $_POST['password'];
@@ -45,9 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $language = $_SESSION['language'];
 
         $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
@@ -58,13 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors[] = "An account with this email already exists.";
         } else {
             $stmt = $pdo->prepare("INSERT INTO users (username, email, password, language) VALUES (:username, :email, :password, :language)");
-            $stmt->execute(['username' => $username, 'email' => $email, 'password' => $password, 'language' => $language]);
+            $stmt->execute(['username' => $username, 'email' => $email, 'password' => $passwordHash, 'language' => $language]);
 
             header('Location: login.php');
             exit();
         }
     }
+} else {
+    $username = '';
+    $email = '';
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -100,14 +103,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="w-full space-y-2"><label class="font-medium text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r6:-form-item">Username</label>
                             <div class="w-full">
                                 <div class="w-full h-[42px] px-3 flex items-center rounded-xl border border-neutral-800 focus-within:border-2 focus-within:border-[#1e1e20] focus-within:ring-2 focus-within:ring-neutral-700 bg-neutral-900 transition-all duration-200 relative data-[filled=true]:border-neutral-200">
-                                    <input placeholder="Jhon Doe" type="text" id="username" name="username" class="flex-1 h-full py-2 outline-none text-sm text-neutral-300 bg-transparent relative z-[9999] disabled:cursor-not-allowed shadow-inner" />
+                                    <input placeholder="Jhon Doe" type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" class="flex-1 h-full py-2 outline-none text-sm text-neutral-300 bg-transparent relative z-[9999] disabled:cursor-not-allowed shadow-inner" />
                                 </div>
                             </div>
                         </div>
                         <div class="w-full space-y-2"><label class="font-medium text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r6:-form-item">Email</label>
                             <div class="w-full">
                                 <div class="w-full h-[42px] px-3 flex items-center rounded-xl border border-neutral-800 focus-within:border-2 focus-within:border-[#1e1e20] focus-within:ring-2 focus-within:ring-neutral-700 bg-neutral-900 transition-all duration-200 relative data-[filled=true]:border-neutral-200">
-                                    <input placeholder="jhondoe@email.com" type="email" id="email" name="email" class="flex-1 h-full py-2 outline-none text-sm text-neutral-300 bg-transparent relative z-[9999] disabled:cursor-not-allowed shadow-inner" />
+                                    <input placeholder="jhondoe@email.com" type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" class="flex-1 h-full py-2 outline-none text-sm text-neutral-300 bg-transparent relative z-[9999] disabled:cursor-not-allowed shadow-inner" />
                                 </div>
                             </div>
                         </div>

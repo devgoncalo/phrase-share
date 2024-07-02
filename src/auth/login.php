@@ -19,17 +19,16 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST['email'])) {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? ''; 
+
+    if (empty($email)) {
         $errors[] = "The email is required.";
-    }
-    if (empty($_POST['password'])) {
+    } elseif (empty($password)) {
         $errors[] = "The Password is required.";
     }
-
+    
     if (empty($errors)) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
         try {
             $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
             $stmt->execute(['email' => $email]);
@@ -38,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['email'] = $email;
                 $_SESSION['user_id'] = $user['id'];
+
                 header('Location: ../dashboard.php');
                 exit();
             } else {
@@ -48,7 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors[] = "An error occurred. Please try again later.";
         }
     }
+} else {
+    $email = '';
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -84,11 +87,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="w-full space-y-2"><label class="font-medium text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r6:-form-item">Email</label>
                             <div class="w-full">
                                 <div class="w-full h-[42px] px-3 flex items-center rounded-xl border border-neutral-800 focus-within:border-2 focus-within:border-[#1e1e20] focus-within:ring-2 focus-within:ring-neutral-700 bg-neutral-900 transition-all duration-200 relative data-[filled=true]:border-neutral-200">
-                                    <input placeholder="example@email.com" type="email" id="email" name="email" class="flex-1 h-full py-2 outline-none text-sm text-neutral-300 bg-transparent relative z-[9999] disabled:cursor-not-allowed shadow-inner" />
+                                    <input placeholder="example@email.com" type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" class="flex-1 h-full py-2 outline-none text-sm text-neutral-300 bg-transparent relative z-[9999] disabled:cursor-not-allowed shadow-inner" />
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full space-y-2"><label class="font-medium inline-flex w-full justify-between text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r7:-form-item">Password</label>
+                        <div class="w-full space-y-2">
+                            <div class="font-normal inline-flex w-full justify-between text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r7:-form-item">
+                                <label for="password" class="font-medium">Password</label>
+                                <a class="text-blue-400 focus-within:underline focus-within:outline-none hover:underline" href="./forgot-password.php">
+                                    <?php echo htmlspecialchars($trans['login_forgot_password']); ?>
+                                </a>
+                            </div>
                             <div class="w-full">
                                 <div class="w-full h-[42px] px-3 flex items-center rounded-xl border border-neutral-800 focus-within:border-2 focus-within:border-[#1e1e20] focus-within:ring-2 focus-within:ring-neutral-700 bg-neutral-900 transition-all duration-200 relative data-[filled=true]:border-neutral-200">
                                     <input placeholder="********" type="password" id="password" name="password" class="flex-1 h-full py-2 outline-none text-sm text-neutral-300 bg-transparent relative z-[9999] disabled:cursor-not-allowed shadow-inner" />

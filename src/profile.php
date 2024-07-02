@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $sql = "UPDATE users SET username = :name, language = :language WHERE id = :user_id";
   $params = [
-      ':name' => $name,
-      ':language' => $language,
-      ':user_id' => $user_id
+    ':name' => $name,
+    ':language' => $language,
+    ':user_id' => $user_id
   ];
 
   $stmt = $pdo->prepare($sql);
@@ -61,12 +61,19 @@ if ($user === false) {
   <div class="container mx-auto py-8">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-8">
       <h1 class="text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100"><?php echo htmlspecialchars($trans['profile_page_title']); ?></h1>
-      <a href="dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400 bg-white">
-        <span class="inline-flex flex-row items-center gap-2">
-          <i data-lucide="arrow-left" class="size-4"></i>
-          <?php echo htmlspecialchars($trans['general_go_back']); ?>
-        </span>
-      </a>
+      <div>
+        <a href="dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400 bg-white">
+          <span class="inline-flex flex-row items-center gap-2">
+            <i data-lucide="arrow-left" class="size-4"></i>
+            <?php echo htmlspecialchars($trans['general_go_back']); ?>
+          </span>
+        </a>
+        <a href="auth/logout.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
+          <span class="inline-flex flex-row items-center gap-2">
+            <i data-lucide="log-out" class="size-4"></i>
+          </span>
+        </a>
+      </div>
     </div>
 
     <div class="mx-auto max-w-5xl px-6">
@@ -86,14 +93,6 @@ if ($user === false) {
             </div>
             <div class="w-full space-y-1">
               <label class="text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                <?php echo htmlspecialchars($trans['profile_email_address']); ?>
-              </label>
-              <div class="mt-2">
-                <input value="<?php echo htmlspecialchars($user['profile_email']); ?>" readOnly class='relative h-8 w-full select-none appearance-none rounded-md border border-neutral-700 bg-neutral-900 px-2 pl-2 pr-[var(--text-field-right-slot-width)] text-sm text-neutral-100 outline-none transition duration-200 ease-in-out placeholder:text-neutral-100 focus-visible:border focus-visible:border-black focus-visible:ring-2 focus-visible:ring-neutral-700 data-[state="read-only"]:cursor-default data-[state="read-only"]:border-neutral-400 data-[state="read-only"]:bg-neutral-500 data-[state="read-only"]:text-neutral-100' type="email" id="email" name="email" />
-              </div>
-            </div>
-            <div class="w-full space-y-1">
-              <label class="text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 <?php echo htmlspecialchars($trans['profile_language']); ?>
               </label>
               <div class="mt-2">
@@ -102,6 +101,14 @@ if ($user === false) {
                   <option value="it" <?php echo ($language === 'it') ? 'selected' : ''; ?>>🇮🇹 Italiano</option>
                   <option value="pt" <?php echo ($language === 'it') ? 'selected' : ''; ?>>🇵🇹 Português</option>
                 </select>
+              </div>
+            </div>
+            <div class="w-full space-y-1">
+              <label class="text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                <?php echo htmlspecialchars($trans['profile_email_address']); ?>
+              </label>
+              <div class="mt-2">
+                <input value="<?php echo htmlspecialchars($user['profile_email']); ?>" readOnly class='relative h-8 w-full opacity-50 select-none appearance-none rounded-md border border-neutral-700 bg-neutral-900 px-2 pl-2 pr-[var(--text-field-right-slot-width)] text-sm text-neutral-100 outline-none transition duration-200 ease-in-out placeholder:text-neutral-100 focus-visible:border focus-visible:border-black focus-visible:ring-2 focus-visible:ring-neutral-700 data-[state="read-only"]:cursor-default data-[state="read-only"]:border-neutral-400 data-[state="read-only"]:bg-neutral-500 data-[state="read-only"]:text-neutral-100' type="email" id="email" name="email" />
               </div>
             </div>
             <div>

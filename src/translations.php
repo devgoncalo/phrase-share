@@ -19,6 +19,7 @@ $translations = [
         'login_privacy' => 'privacy policy',
 
         'login_submit' => 'Log In',
+        'login_forgot_password' => 'Forgot your password?',
 
         'login_no_account' => "Don't have an account?",
         'login_register' => 'Sign Up',
@@ -35,6 +36,33 @@ $translations = [
 
         'register_no_account' => 'Already have an account?',
         'register_login' => 'Log In',
+
+        // Forgot Password Page
+        'forgot_page_title' => 'Forgot Password',
+
+        'forgot_welcome' => 'It\'s okay, it can happen!',
+        'forgot_information' => 'Enter your email and we\'ll send you a reset link.',
+
+        'forgot_success_message' => 'Check your email for the reset link.',
+        'forgot_submit' => 'Send Link',
+        'forgot_loading_text' => 'Sending...',
+
+        'forgot_remember_action' => 'Remember your password?',
+
+        'forgot_invalid_email' => 'The email is invalid.',
+        'forgot_email_error' => 'An error occurred while sending the email. Please try again later.',
+        'forgot_email_not_found' => 'The email address is not registered.',
+
+        // Reset Password Page
+        'reset_password_page_title' => 'Reset',
+
+        'reset_password_welcome' => 'Choose your new password.',
+        'reset_password_information' => 'A strong password is important to protect you.',
+
+        'reset_password_confirm_label' => 'Confirm',
+        'reset_password_submit' => 'Reset Password',
+
+        'reset_password_action' => 'Don\'t want to reset it anymore?',
 
         // Dashboard Page
         'dashboard_page_title' => 'Dashboard',
@@ -142,6 +170,7 @@ $translations = [
         'login_privacy' => 'politica sulla privacy',
 
         'login_submit' => 'Accedi',
+        'login_forgot_password' => 'Hai dimenticato la password?',
 
         'login_no_account' => 'Non hai un account?',
         'login_register' => 'Registrati',
@@ -158,6 +187,33 @@ $translations = [
 
         'register_no_account' => 'Hai già un account?',
         'register_login' => 'Accedi',
+
+        // Forgot Password Page
+        'forgot_page_title' => 'Password dimenticata',
+
+        'forgot_welcome' => 'Va bene, può succedere!',
+        'forgot_information' => 'Inserisci il tuo indirizzo email e ti invieremo un link di ripristino.',
+
+        'forgot_success_message' => 'Controlla la tua email per il link di ripristino.',
+        'forgot_submit' => 'Invia Link',
+        'forgot_loading_text' => 'Invio...',
+
+        'forgot_remember_action' => 'Ricordi la tua password?',
+
+        'forgot_invalid_email' => 'L\'email non è valida.',
+        'forgot_email_error' => 'Si è verificato un errore durante l\'invio dell\'email. Per favore, riprova più tardi.',
+        'forgot_email_not_found' => 'L\'indirizzo email non è registrato.',
+
+        // Reset Password Page
+        'reset_password_page_title' => 'Reset',
+
+        'reset_password_welcome' => 'Scegli la tua nuova password.',
+        'reset_password_information' => 'Una password forte è importante per proteggerti.',
+
+        'reset_password_confirm_label' => 'Conferma',
+        'reset_password_submit' => 'Resetta Password',
+
+        'reset_password_action' => 'Non vuoi più resettarla?',
 
         // Dashboard Page
         'dashboard_page_title' => 'Dashboard',
@@ -265,6 +321,7 @@ $translations = [
         'login_privacy' => 'política de privacidade',
 
         'login_submit' => 'Entrar',
+        'login_forgot_password' => 'Esqueceu-se da password?',
 
         'login_no_account' => 'Não tem uma conta?',
         'login_register' => 'Registro',
@@ -281,6 +338,33 @@ $translations = [
 
         'register_no_account' => 'Já tem uma conta?',
         'register_login' => 'Entrar',
+
+        // Forgot Password Page
+        'forgot_page_title' => 'Esqueceu a senha',
+
+        'forgot_welcome' => 'Tudo bem, pode acontecer!',
+        'forgot_information' => 'Digite seu email e enviaremos um link de redefinição.',
+
+        'forgot_success_message' => 'Verifique seu email para o link de redefinição.',
+        'forgot_submit' => 'Enviar Link',
+        'forgot_loading_text' => 'Enviando...',
+
+        'forgot_remember_action' => 'Lembrou sua senha?',
+
+        'forgot_invalid_email' => 'O email é inválido.',
+        'forgot_email_error' => 'Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.',
+        'forgot_email_not_found' => 'O endereço de email não está registrado.',
+
+        // Reset Password Page
+        'reset_password_page_title' => 'Redefinir',
+
+        'reset_password_welcome' => 'Escolha sua nova senha.',
+        'reset_password_information' => 'Uma senha forte é importante para o proteger.',
+
+        'reset_password_confirm_label' => 'Confirmar',
+        'reset_password_submit' => 'Redefinir Senha',
+
+        'reset_password_action' => 'Não quer mais redefinir?',
 
         // Dashboard Page
         'dashboard_page_title' => 'Dashboard',

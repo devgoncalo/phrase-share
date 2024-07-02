@@ -3,7 +3,9 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    language VARCHAR(10) DEFAULT 'en'
+    language VARCHAR(10) DEFAULT 'en',
+    reset_token VARCHAR(255),
+    reset_token_expire TIMESTAMP   
 );
 
 CREATE TABLE phrases (
