@@ -2,6 +2,13 @@
 include '../database/connection.php';
 include '../translations.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../lib/php-mailer/src/Exception.php';
+require '../lib/php-mailer/src/PHPMailer.php';
+require '../lib/php-mailer/src/SMTP.php';
+
 $errors = [];
 
 session_start();
@@ -21,27 +28,28 @@ if (isset($_SESSION['user_id'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? '';
     $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
 
     if (empty($username)) {
-        $errors[] = "Username is required";
+        $errors[] = $trans['register_username_required'];
     } elseif (empty($email)) {
-        $errors[] = "Email is required";
+        $errors[] = $trans['register_email_required'];
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Invalid email format";
-    } elseif (empty($_POST['password'])) {
-        $errors[] = "Password is required";
+        $errors[] = $trans['register_invalid_email_format'];
+    } elseif (empty($password)) {
+        $errors[] = $trans['register_password_required'];
     } else {
         $password = $_POST['password'];
         if (strlen($password) < 8) {
-            $errors[] = "Password must be at least 8 characters long";
+            $errors[] = $trans['register_password_length'];
         } elseif (!preg_match('/[A-Z]/', $password)) {
-            $errors[] = "Password must include at least one uppercase letter";
+            $errors[] = $trans['register_password_uppercase'];
         } elseif (!preg_match('/[a-z]/', $password)) {
-            $errors[] = "Password must include at least one lowercase letter";
+            $errors[] = $trans['register_password_lowercase'];
         } elseif (!preg_match('/[0-9]/', $password)) {
-            $errors[] = "Password must include at least one number";
+            $errors[] = $trans['register_password_number'];
         } elseif (!preg_match('/[\W]/', $password)) {
-            $errors[] = "Password must include at least one special character";
+            $errors[] = $trans['register_password_special'];
         }
     }
 
@@ -54,13 +62,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailExists = $stmt->fetchColumn();
 
         if ($emailExists) {
-            $errors[] = "An account with this email already exists.";
+            $errors[] = $trans['register_email_exists'];
         } else {
-            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, language) VALUES (:username, :email, :password, :language)");
-            $stmt->execute(['username' => $username, 'email' => $email, 'password' => $passwordHash, 'language' => $language]);
+            $token = bin2hex(random_bytes(16));
 
-            header('Location: login.php');
-            exit();
+            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, language, confirmation_token) VALUES (:username, :email, :password, :language, :token)");
+            $stmt->execute(['username' => $username, 'email' => $email, 'password' => $passwordHash, 'language' => $language, 'token' => $token]);
+
+            $confirmation_link = "http://localhost:8000/src/auth/confirm.php?token=" . $token;
+            if (isset($_SESSION['language'])) {
+                $confirmation_link .= "&lang=" . $_SESSION['language'];
+            }
+
+            $mail = new PHPMailer(true);
+
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'ssl0.ovh.net';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'noreply@i-told-u.com';
+                $mail->Password = 'NoQ!34343Reply!';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+
+                $mail->setFrom('no-reply@i-told-u.com', 'PhraseShare');
+                $mail->addAddress($email);
+
+                $mail->isHTML(true);
+                $mail->Subject = $trans['register_email_subject'];
+                $mail->Body = $trans['register_email_body'] . $confirmation_link;
+
+                $mail->send();
+                header('Location: login.php?confirmation_sent=true');
+                exit();
+            } catch (Exception $e) {
+                $errors[] = $trans['register_email_error'] . ': ' . $mail->ErrorInfo;
+            }
         }
     }
 } else {

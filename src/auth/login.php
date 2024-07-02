@@ -18,16 +18,32 @@ if (isset($_SESSION['user_id'])) {
     exit();
 }
 
+if (isset($_GET['error'])) {
+    switch ($_GET['error']) {
+        case 'invalid_token':
+            $errors[] = $trans['login_invalid_token'];
+            break;
+        case 'db_error':
+            $errors[] = $trans['login_db_error'];
+            break;
+        case 'token_not_provided':
+            $errors[] = $trans['login_token_not_provided'];
+            break;
+        default:
+            $errors[] = $trans['login_unknown_error'];
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? ''; 
+    $password = $_POST['password'] ?? '';
 
     if (empty($email)) {
-        $errors[] = "The email is required.";
+        $errors[] = $trans['login_email_required'];
     } elseif (empty($password)) {
-        $errors[] = "The Password is required.";
+        $errors[] = $trans['login_password_required'];
     }
-    
+
     if (empty($errors)) {
         try {
             $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
@@ -35,17 +51,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $stmt->fetch();
 
             if ($user && password_verify($password, $user['password'])) {
-                $_SESSION['email'] = $email;
-                $_SESSION['user_id'] = $user['id'];
+                if ($user['confirmed'] == 1) {
+                    $_SESSION['email'] = $email;
+                    $_SESSION['user_id'] = $user['id'];
 
-                header('Location: ../dashboard.php');
-                exit();
+                    header('Location: ../dashboard.php');
+                    exit();
+                } else {
+                    $errors[] = $trans['login_account_not_verified'];
+                }
             } else {
-                $errors[] = "Invalid email or password.";
+                $errors[] = $trans['login_invalid_email_password'];
             }
         } catch (PDOException $e) {
             error_log('Database Error: ' . $e->getMessage(), 0);
-            $errors[] = "An error occurred. Please try again later.";
+            $errors[] = $trans['db_error'];
         }
     }
 } else {
@@ -105,6 +125,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                         </div>
                     </div>
+                    <?php if (isset($_GET['verified']) && $_GET['verified'] === 'true') : ?>
+                        <div id="success-message" class="flex w-full flex-row items-center gap-2 text-xs text-green-500">
+                            <i data-lucide="check" class="size-4"></i>
+                            <span><?php echo htmlspecialchars($trans['login_success_message']); ?></span>
+                        </div>
+                    <?php elseif (isset($_GET['confirmation_sent']) && $_GET['confirmation_sent'] === 'true') : ?>
+                        <div id="success-message" class="flex w-full flex-row items-center gap-2 text-xs text-green-500">
+                            <i data-lucide="check" class="size-4"></i>
+                            <span><?php echo htmlspecialchars($trans['register_confirmation_sent_success']); ?></span>
+                        </div>
+                    <?php endif; ?>
                     <?php if (!empty($errors)) : ?>
                         <div class="flex w-full flex-row gap-1 items-center text-red-500 text-xs" role="alert">
                             <?php foreach ($errors as $error) : ?>
@@ -132,6 +163,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <script>
         lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const showSuccess = (param) => {
+                const successMessage = document.getElementById('success-message');
+                if (successMessage && urlParams.get(param) === 'true') {
+                    successMessage.style.display = 'flex';
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }
+            };
+
+            showSuccess('verified');
+            showSuccess('confirmation_sent');
+        });
     </script>
 </body>
 

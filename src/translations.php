@@ -9,6 +9,8 @@ $translations = [
         'home_title' => 'Share Your Phrases',
         'home_sub_title' => 'With Anyone',
         'home_description' => 'Your phrase is encrypted in your browser before being stored for a limited period of time and read operations. Unencrypted data never leaves your browser.',
+        'home_login_button' => 'Login',
+        'home_register_button' => 'Register',
 
         // Login Page
         'login_page_title' => 'Login',
@@ -20,6 +22,17 @@ $translations = [
 
         'login_submit' => 'Log In',
         'login_forgot_password' => 'Forgot your password?',
+
+        'login_invalid_token' => 'Invalid token. Please check your confirmation link.',
+        'login_db_error' => 'An error occurred. Please try again later.',
+        'login_token_not_provided' => 'Token not provided.',
+        'login_unknown_error' => 'Unknown error.',
+        'login_email_required' => 'The email is required.',
+        'login_password_required' => 'The Password is required.',
+        'login_account_not_verified' => 'Your account has not been verified yet. Please check your email.',
+        'login_invalid_email_password' => 'Invalid email or password.',
+
+        'login_success_message' => 'You have successfully confirmed your account.',
 
         'login_no_account' => "Don't have an account?",
         'login_register' => 'Sign Up',
@@ -33,6 +46,22 @@ $translations = [
         'register_privacy' => 'privacy policy',
 
         'register_submit' => 'Sign Up',
+
+        'register_username_required' => 'Username is required.',
+        'register_email_required' => 'Email is required.',
+        'register_invalid_email_format' => 'Invalid email format.',
+        'register_password_required' => 'Password is required.',
+        'register_password_length' => 'Password must be at least 8 characters long.',
+        'register_password_uppercase' => 'Password must include at least one uppercase letter.',
+        'register_password_lowercase' => 'Password must include at least one lowercase letter.',
+        'register_password_number' => 'Password must include at least one number.',
+        'register_password_special' => 'Password must include at least one special character.',
+        'register_email_exists' => 'An account with this email already exists.',
+        'register_email_error' => 'An error occurred while sending the email. Please try again later.',
+        'register_email_subject' => 'Confirm Your PhraseShare Registration',
+        'register_email_body' => 'Please confirm your account by clicking the link: ',
+
+        'register_confirmation_sent_success' => 'Email sent successfully. Check your inbox.',
 
         'register_no_account' => 'Already have an account?',
         'register_login' => 'Log In',
@@ -87,10 +116,10 @@ $translations = [
 
         // Profile Page
         'profile_page_title' => 'Profile',
-        'profile_your_information' => 'Your information',
+        'profile_your_information' => 'Your Information',
 
         'profile_name' => 'Name',
-        'profile_email_address' => 'Email address',
+        'profile_email_address' => 'Email Address',
         'profile_language' => 'Language',
 
         'profile_save_changes' => 'Save Changes',
@@ -160,6 +189,8 @@ $translations = [
         'home_title' => 'Condividi le Tue',
         'home_sub_title' => 'Frasi con Chiunque',
         'home_description' => 'La tua frase è crittografata nel tuo browser prima di essere memorizzata per un periodo limitato e per operazioni di lettura. I dati non crittografati non lasciano mai il tuo browser.',
+        'home_login_button' => 'Accedi',
+        'home_register_button' => 'Registrati',
 
         // Login Page
         'login_page_title' => 'Accedi',
@@ -171,6 +202,17 @@ $translations = [
 
         'login_submit' => 'Accedi',
         'login_forgot_password' => 'Hai dimenticato la password?',
+
+        'login_invalid_token' => 'Token non valido. Si prega di controllare il link di conferma.',
+        'login_db_error' => 'Si è verificato un errore. Per favore riprova più tardi.',
+        'login_token_not_provided' => 'Token non fornito.',
+        'login_unknown_error' => 'Errore sconosciuto.',
+        'login_email_required' => 'L\'email è richiesta.',
+        'login_password_required' => 'La password è richiesta.',
+        'login_account_not_verified' => 'Il tuo account non è stato ancora verificato. Controlla la tua email.',
+        'login_invalid_email_password' => 'Email o password non validi.',
+
+        'login_success_message' => 'Hai confermato con successo il tuo account.',
 
         'login_no_account' => 'Non hai un account?',
         'login_register' => 'Registrati',
@@ -184,6 +226,22 @@ $translations = [
         'register_privacy' => 'politica sulla privacy',
 
         'register_submit' => 'Registrati',
+
+        'register_username_required' => 'Il nome utente è obbligatorio.',
+        'register_email_required' => 'L\'email è obbligatoria.',
+        'register_invalid_email_format' => 'Formato email non valido.',
+        'register_password_required' => 'La password è obbligatoria.',
+        'register_password_length' => 'La password deve essere lunga almeno 8 caratteri.',
+        'register_password_uppercase' => 'La password deve includere almeno una lettera maiuscola.',
+        'register_password_lowercase' => 'La password deve includere almeno una lettera minuscola.',
+        'register_password_number' => 'La password deve includere almeno un numero.',
+        'register_password_special' => 'La password deve includere almeno un carattere speciale.',
+        'register_email_exists' => 'Esiste già un account con questa email.',
+        'register_email_error' => 'Si è verificato un errore durante l\'invio dell\'email. Riprova più tardi.',
+        'register_email_subject' => 'Conferma la tua registrazione su PhraseShare',
+        'register_email_body' => 'Per favore, conferma il tuo account cliccando sul link: ',
+
+        'register_confirmation_sent_success' => 'Email inviata con successo. Controlla la tua casella di posta.',
 
         'register_no_account' => 'Hai già un account?',
         'register_login' => 'Accedi',
@@ -311,7 +369,9 @@ $translations = [
         'home_title' => 'Compartilhe Frases',
         'home_sub_title' => 'com Quem Quiser',
         'home_description' => 'Sua frase é criptografada em seu navegador antes de ser armazenada por um período limitado e para operações de leitura. Os dados não criptografados nunca deixam seu navegador.',
-
+        'home_login_button' => 'Entrar',
+        'home_register_button' => 'Registrar',
+        
         // Login Page
         'login_page_title' => 'Entrar',
 
@@ -322,6 +382,17 @@ $translations = [
 
         'login_submit' => 'Entrar',
         'login_forgot_password' => 'Esqueceu-se da password?',
+
+        'login_invalid_token' => 'Token inválido. Por favor, verifique o link de confirmação.',
+        'login_db_error' => 'Ocorreu um erro. Por favor, tente novamente mais tarde.',
+        'login_token_not_provided' => 'Token não fornecido.',
+        'login_unknown_error' => 'Erro desconhecido.',
+        'login_email_required' => 'O email é obrigatório.',
+        'login_password_required' => 'A password é obrigatória.',
+        'login_account_not_verified' => 'Sua conta ainda não foi verificada. Por favor, verifique seu email.',
+        'login_invalid_email_password' => 'Email ou senha inválidos.',
+
+        'login_success_message' => 'Você confirmou com sucesso sua conta.',
 
         'login_no_account' => 'Não tem uma conta?',
         'login_register' => 'Registro',
@@ -336,8 +407,24 @@ $translations = [
 
         'register_submit' => 'Registrar',
 
+        'register_username_required' => 'O nome de utilizador é obrigatório.',
+        'register_email_required' => 'O email é obrigatório.',
+        'register_invalid_email_format' => 'O formato de email é inválido.',
+        'register_password_required' => 'A senha é obrigatória.',
+        'register_password_length' => 'A senha deve ter pelo menos 8 caracteres.',
+        'register_password_uppercase' => 'A senha deve incluir pelo menos uma letra maiúscula.',
+        'register_password_lowercase' => 'A senha deve incluir pelo menos uma letra minúscula.',
+        'register_password_number' => 'A senha deve incluir pelo menos um número.',
+        'register_password_special' => 'A senha deve incluir pelo menos um caractere especial.',
+        'register_email_exists' => 'Já existe uma conta com este email.',
+        'register_email_error' => 'Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.',
+        'register_email_subject' => 'Confirme o seu email no PhraseShare',
+        'register_email_body' => 'Confirme a sua conta clicando no link: ',
+
         'register_no_account' => 'Já tem uma conta?',
         'register_login' => 'Entrar',
+
+        'register_confirmation_sent_success' => 'Email enviado com sucesso. Verifique sua caixa de entrada.',
 
         // Forgot Password Page
         'forgot_page_title' => 'Esqueceu a senha',

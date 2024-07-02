@@ -4,6 +4,8 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     language VARCHAR(10) DEFAULT 'en',
+    confirmation_token VARCHAR(255),
+    confirmed TINYINT(1) DEFAULT 0,
     reset_token VARCHAR(255),
     reset_token_expire TIMESTAMP   
 );
