@@ -110,7 +110,8 @@ if ($user === false) {
                 <?php echo htmlspecialchars($trans['profile_language']); ?>
               </label>
               <div class="mt-2">
-                <select name="language" id="language" class='relative h-8 w-full select-none appearance-none rounded-md border border-neutral-700 bg-neutral-900 px-2 pl-2 pr-[var(--text-field-right-slot-width)] text-sm text-neutral-100 outline-none transition duration-200 ease-in-out placeholder:text-neutral-100 focus-visible:border focus-visible:border-black focus-visible:ring-2 focus-visible:ring-neutral-700'>
+                <?php echo "--->".$language; ?>
+                <select name="language" class='relative h-8 w-full select-none appearance-none rounded-md border border-neutral-700 bg-neutral-900 px-2 pl-2 pr-[var(--text-field-right-slot-width)] text-sm text-neutral-100 outline-none transition duration-200 ease-in-out placeholder:text-neutral-100 focus-visible:border focus-visible:border-black focus-visible:ring-2 focus-visible:ring-neutral-700'>
                   <option value="en" <?php echo ($language === 'en') ? 'selected' : ''; ?>>🇺🇸 English</option>
                   <option value="it" <?php echo ($language === 'it') ? 'selected' : ''; ?>>🇮🇹 Italiano</option>
                   <option value="pt" <?php echo ($language === 'pt') ? 'selected' : ''; ?>>🇵🇹 Português</option>
@@ -178,10 +179,6 @@ if ($user === false) {
   <script>
     lucide.createIcons();
 
-    document.getElementById('name').value = "<?php echo htmlspecialchars($user['username']); ?>";
-    document.getElementById('email').value = "<?php echo htmlspecialchars($user['email']); ?>";
-    document.getElementById('language').value = "<?php echo htmlspecialchars($user['language']); ?>";
-
     function openDeleteModal() {
       document.getElementById('delete-modal').classList.remove('hidden');
       document.getElementById('delete-modal-background').classList.remove('hidden');
@@ -215,7 +212,6 @@ if ($user === false) {
     document.getElementById('delete-account-form').addEventListener('submit', function(event) {
       if (confirmationInput.value !== 'DELETE') {
         event.preventDefault();
-        alert('You must type DELETE to confirm.');
       }
     });
   </script>
