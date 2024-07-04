@@ -123,6 +123,15 @@ $translations = [
         'profile_language' => 'Language',
 
         'profile_save_changes' => 'Save Changes',
+        'profile_delete' => 'Delete Account',
+
+        'profile_delete_modal_title' => 'Delete Account?',
+        'profile_delete_modal_description' => 'Are you sure you want to delete your account?',
+        'profile_delete_modal_type' => 'Type ',
+        'profile_delete_modal_type_confirm' => ' to confirm.',
+        'profile_delete_modal_warning' => 'This action cannot be undone.',
+        'profile_delete_modal_confirm' => 'Delete Account',
+        'profile_delete_modal_cancel' => 'Cancel',
 
         'profile_security_note' => 'For security reasons, we do not allow changing your email.',
 
@@ -303,6 +312,15 @@ $translations = [
         'profile_language' => 'Lingua',
 
         'profile_save_changes' => 'Salva le modifiche',
+        'profile_delete' => 'Elimina Account',
+
+        'profile_delete_modal_title' => 'Elimina Account?',
+        'profile_delete_modal_description' => 'Sei sicuro di voler eliminare il tuo account?',
+        'profile_delete_modal_type' => 'Digita ',
+        'profile_delete_modal_type_confirm' => ' per confermare.',
+        'profile_delete_modal_warning' => 'Azione non può essere annullata.',
+        'profile_delete_modal_confirm' => 'Elimina Account',
+        'profile_delete_modal_cancel' => 'Annulla',
 
         'profile_security_note' => 'Per motivi di sicurezza, non consentiamo la modifica della tua email.',
 
@@ -390,7 +408,7 @@ $translations = [
         'login_email_required' => 'O email é obrigatório.',
         'login_password_required' => 'A password é obrigatória.',
         'login_account_not_verified' => 'Sua conta ainda não foi verificada. Por favor, verifique seu email.',
-        'login_invalid_email_password' => 'Email ou senha inválidos.',
+        'login_invalid_email_password' => 'Email ou password inválidos.',
 
         'login_success_message' => 'Você confirmou com sucesso sua conta.',
 
@@ -410,12 +428,12 @@ $translations = [
         'register_username_required' => 'O nome de utilizador é obrigatório.',
         'register_email_required' => 'O email é obrigatório.',
         'register_invalid_email_format' => 'O formato de email é inválido.',
-        'register_password_required' => 'A senha é obrigatória.',
-        'register_password_length' => 'A senha deve ter pelo menos 8 caracteres.',
-        'register_password_uppercase' => 'A senha deve incluir pelo menos uma letra maiúscula.',
-        'register_password_lowercase' => 'A senha deve incluir pelo menos uma letra minúscula.',
-        'register_password_number' => 'A senha deve incluir pelo menos um número.',
-        'register_password_special' => 'A senha deve incluir pelo menos um caractere especial.',
+        'register_password_required' => 'A password é obrigatória.',
+        'register_password_length' => 'A password deve ter pelo menos 8 caracteres.',
+        'register_password_uppercase' => 'A password deve incluir pelo menos uma letra maiúscula.',
+        'register_password_lowercase' => 'A password deve incluir pelo menos uma letra minúscula.',
+        'register_password_number' => 'A password deve incluir pelo menos um número.',
+        'register_password_special' => 'A password deve incluir pelo menos um caractere especial.',
         'register_email_exists' => 'Já existe uma conta com este email.',
         'register_email_error' => 'Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.',
         'register_email_subject' => 'Confirme o seu email no PhraseShare',
@@ -427,7 +445,7 @@ $translations = [
         'register_confirmation_sent_success' => 'Email enviado com sucesso. Verifique sua caixa de entrada.',
 
         // Forgot Password Page
-        'forgot_page_title' => 'Esqueceu a senha',
+        'forgot_page_title' => 'Esqueceu-se da password',
 
         'forgot_welcome' => 'Tudo bem, pode acontecer!',
         'forgot_information' => 'Digite seu email e enviaremos um link de redefinição.',
@@ -436,7 +454,7 @@ $translations = [
         'forgot_submit' => 'Enviar Link',
         'forgot_loading_text' => 'Enviando...',
 
-        'forgot_remember_action' => 'Lembrou sua senha?',
+        'forgot_remember_action' => 'Lembra-se da password?',
 
         'forgot_invalid_email' => 'O email é inválido.',
         'forgot_email_error' => 'Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.',
@@ -445,11 +463,11 @@ $translations = [
         // Reset Password Page
         'reset_password_page_title' => 'Redefinir',
 
-        'reset_password_welcome' => 'Escolha sua nova senha.',
-        'reset_password_information' => 'Uma senha forte é importante para o proteger.',
+        'reset_password_welcome' => 'Escolha a sua nova password.',
+        'reset_password_information' => 'Uma password forte é importante para o proteger.',
 
         'reset_password_confirm_label' => 'Confirmar',
-        'reset_password_submit' => 'Redefinir Senha',
+        'reset_password_submit' => 'Redefinir Password',
 
         'reset_password_action' => 'Não quer mais redefinir?',
 
@@ -483,6 +501,15 @@ $translations = [
         'profile_language' => 'Idioma',
 
         'profile_save_changes' => 'Guardar Alterações',
+        'profile_delete' => 'Eliminar Conta',
+
+        'profile_delete_modal_title' => 'Eliminar Conta?',
+        'profile_delete_modal_description' => 'Tem a certeza de que quer eliminar a sua conta?',
+        'profile_delete_modal_type' => 'Escreva ',
+        'profile_delete_modal_type_confirm' => ' para confirmar.',
+        'profile_delete_modal_warning' => 'Esta ação não pode ser desfeita.',
+        'profile_delete_modal_confirm' => 'Eliminar Conta',
+        'profile_delete_modal_cancel' => 'Cancelar',
 
         'profile_security_note' => 'Por motivos de segurança, não permitimos a alteração do seu email.',
 
