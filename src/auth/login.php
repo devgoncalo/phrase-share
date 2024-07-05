@@ -136,6 +136,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span><?php echo htmlspecialchars($trans['register_confirmation_sent_success']); ?></span>
                         </div>
                     <?php endif; ?>
+                    <?php if (isset($_GET['reset_success']) && $_GET['reset_success'] === 'true') : ?>
+                        <div id="success-message" class="flex w-full flex-row items-center gap-2 text-xs text-green-500">
+                            <i data-lucide="check" class="size-4"></i>
+                            <span><?php echo htmlspecialchars($trans['reset_password_success_message']); ?></span>
+                        </div>
+                    <?php endif; ?>
                     <?php if (!empty($errors)) : ?>
                         <div class="flex w-full flex-row gap-1 items-center text-red-500 text-xs" role="alert">
                             <?php foreach ($errors as $error) : ?>
@@ -178,6 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             showSuccess('verified');
             showSuccess('confirmation_sent');
+            showSuccess('reset_success');
         });
     </script>
 </body>

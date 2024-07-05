@@ -93,6 +93,8 @@ $translations = [
 
         'reset_password_action' => 'Don\'t want to reset it anymore?',
 
+        'reset_password_success_message' => 'Your password has been reset successfully.',
+
         // Dashboard Page
         'dashboard_page_title' => 'Dashboard',
         'dashboard_add_phrase' => 'Add Phrase',
@@ -330,6 +332,8 @@ $translations = [
 
         'reset_password_action' => 'Non vuoi più resettarla?',
 
+        'reset_password_success_message' => 'La tua password è stata resettata con successo.',
+
         // Dashboard Page
         'dashboard_page_title' => 'Dashboard',
         'dashboard_add_phrase' => 'Aggiungi Frase',
@@ -566,6 +570,8 @@ $translations = [
         'reset_password_submit' => 'Redefinir Password',
 
         'reset_password_action' => 'Não quer mais redefinir?',
+
+        'reset_password_success_message' => 'A sua password foi redefinida com sucesso.',
 
         // Dashboard Page
         'dashboard_page_title' => 'Dashboard',

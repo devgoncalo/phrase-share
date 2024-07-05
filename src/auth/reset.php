@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare("UPDATE users SET password = :password, reset_token = NULL, reset_token_expire = NULL WHERE id = :id");
     $stmt->execute(['password' => $hashed_password, 'id' => $user['id']]);
 
-    header('Location: ./login.php');
+    header('Location: ./login.php?reset_success=true');
     exit();
   }
 }
