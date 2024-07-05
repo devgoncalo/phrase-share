@@ -89,7 +89,7 @@ if (isset($_POST['unblock_user'])) {
         </a>
       </div>
     </div>
-    <div class="mx-auto max-w-5xl px-6">
+    <div class="mx-auto max-w-5xl px-6 overflow-auto max-h-[calc(100vh-152px)]">
       <?php if (empty($users)) : ?>
         <div class="flex h-80 flex-col items-center justify-center rounded-lg border border-neutral-700 p-6">
           <div class="mb-8 flex max-w-md flex-col gap-2 text-center">
