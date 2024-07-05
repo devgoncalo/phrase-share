@@ -54,7 +54,8 @@ $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user === false) {
-  echo "User not found!";
+  header('Location: ./auth/login.php');
+  session_destroy();
   exit();
 }
 ?>
@@ -110,7 +111,6 @@ if ($user === false) {
                 <?php echo htmlspecialchars($trans['profile_language']); ?>
               </label>
               <div class="mt-2">
-                <?php echo "--->".$language; ?>
                 <select name="language" class='relative h-8 w-full select-none appearance-none rounded-md border border-neutral-700 bg-neutral-900 px-2 pl-2 pr-[var(--text-field-right-slot-width)] text-sm text-neutral-100 outline-none transition duration-200 ease-in-out placeholder:text-neutral-100 focus-visible:border focus-visible:border-black focus-visible:ring-2 focus-visible:ring-neutral-700'>
                   <option value="en" <?php echo ($language === 'en') ? 'selected' : ''; ?>>🇺🇸 English</option>
                   <option value="it" <?php echo ($language === 'it') ? 'selected' : ''; ?>>🇮🇹 Italiano</option>

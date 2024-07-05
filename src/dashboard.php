@@ -15,6 +15,13 @@ $trans = $translations[$language] ?? $translations['en'];
 
 $user_id = $_SESSION['user_id'];
 
+$stmt = $pdo->prepare("SELECT admin FROM users WHERE id = :user_id");
+$stmt->bindParam(':user_id', $user_id);
+$stmt->execute();
+$user = $stmt->fetch();
+
+$isAdmin = $user && $user['admin'] == 1;
+
 $stmt = $pdo->prepare("SELECT * FROM phrases WHERE user_id = :user_id");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
@@ -29,7 +36,6 @@ if (isset($_POST['delete_phrase'])) {
     header('Location: dashboard.php');
     exit();
 }
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['make_public'])) {
@@ -85,15 +91,22 @@ $current_time = time();
                 <?php echo htmlspecialchars($trans['dashboard_page_title']); ?>
             </h1>
             <div>
-                <a href="phrase/create.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
+                <a href="phrase/create.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white px-2 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                     <span class="inline-flex flex-row items-center gap-2">
                         <i data-lucide="plus" class="size-4"></i>
-                        <?php echo htmlspecialchars($trans['dashboard_add_phrase']); ?>
+                        <span class="hidden sm:inline-flex"><?php echo htmlspecialchars($trans['dashboard_add_phrase']); ?></span>
                     </span>
                 </a>
+                <?php if ($isAdmin) : ?>
+                    <a href="./admin/users/dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400    ">
+                        <span class="inline-flex flex-row items-center gap-2">
+                            <i data-lucide="shield" class="size-4"></i>
+                        </span>
+                    </a>
+                <?php endif; ?>
                 <a href="profile.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                     <span class="inline-flex flex-row items-center gap-2">
-                    <i data-lucide="user" class="size-4"></i>
+                        <i data-lucide="user" class="size-4"></i>
                     </span>
                 </a>
             </div>
@@ -106,7 +119,7 @@ $current_time = time();
                             <h2 class="text-xl font-bold tracking-[-0.16px] text-neutral-100"><?php echo htmlspecialchars($trans['dashboard_you_have_not_created_phrases']); ?></h2>
                             <span class="text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['dashboard_create_phrase_explanation']); ?></span>
                         </div>
-                        <a href="phrase/create.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 pl-2 pr-3 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800">
+                        <a href="phrase/create.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 pl-2 pr-3 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-neutral-800 focus-visible:border-black focus-visible:bg-neutral-800 focus-visible:outline-none">
                             <span class="inline-flex flex-row items-center gap-2">
                                 <i data-lucide="plus" class="size-4"></i>
                                 <?php echo htmlspecialchars($trans['dashboard_add_phrase']); ?>
@@ -133,24 +146,16 @@ $current_time = time();
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-sm"><?php echo $phrase['content']; ?></td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-sm"><?php echo date('Y-m-d H:i:s', strtotime($phrase['creation_time'] . ' +2 hours')); ?></td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-xs text-center text-sm">
-                                    <?php if ($phrase['visibility'] == '1') : ?>
-                                        <?php echo 'Public'; ?>
-                                    <?php else : ?>
-                                        <?php echo 'Private'; ?>
-                                    <?php endif; ?>
+                                    <?php echo $phrase['visibility'] == '1' ? 'Public' : 'Private'; ?>
                                 </td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-xs text-center text-sm">
-                                    <?php if ($phrase['visibility_type'] == "automatic") : ?>
-                                        <?php echo 'Automatic'; ?>
-                                    <?php elseif ($phrase['visibility_type'] == "manual") : ?>
-                                        <?php echo 'Manual'; ?>
-                                    <?php endif; ?>
+                                    <?php echo $phrase['visibility_type'] == "automatic" ? 'Automatic' : 'Manual'; ?>
                                 </td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-center text-sm">
                                     <button id="dropdownButton_<?php echo $phrase['id']; ?>" type="button" class="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded border border-none bg-transparent align-middle text-neutral-400 transition duration-200 ease-in-out hover:bg-neutral-700 focus-visible:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-600 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400" aria-label="More actions">
                                         <i data-lucide="ellipsis" class="size-4"></i>
                                     </button>
-                                    <div id="dropdownMenu_<?php echo $phrase['id']; ?>" class="hidden origin-top-right mt-1 absolute right-[8.75rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
+                                    <div id="dropdownMenu_<?php echo $phrase['id']; ?>" class="hidden origin-top-right mt-1 absolute right-[8.75rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
                                         <div class="flex flex-col gap-1 my-1">
                                             <?php if ($current_time <= strtotime($phrase['creation_time']) + (5 * 60)) : ?>
                                                 <a href="phrase/edit.php?id=<?php echo $phrase['id']; ?>" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:border-neutral-600 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
@@ -196,12 +201,7 @@ $current_time = time();
             <?php endif; ?>
         </div>
     </div>
-    
-</body>
-
-</html>
-
-<script>
+    <script>
         lucide.createIcons();
 
         <?php foreach ($phrases as $phrase) : ?>
@@ -219,3 +219,6 @@ $current_time = time();
             });
         <?php endforeach; ?>
     </script>
+</body>
+
+</html>

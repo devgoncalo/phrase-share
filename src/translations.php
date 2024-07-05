@@ -188,6 +188,54 @@ $translations = [
 
         'view_phrase_not_published' => "The writer didn't publish the phrase yet.",
         'view_phrase_not_yet_published' => "The phrase is not yet published. Time remaining: ",
+
+        // Admin Users Page
+        'admin_page_title' => 'Admin',
+        'admin_users_page_title' => 'Manage Users',
+
+        'admin_users_no_users_found' => 'No users found.',
+        'admin_users_no_users_explanation' => 'You have no users created yet.',
+
+        'admin_users_user_id' => 'ID',
+        'admin_users_user_name' => 'Name',
+        'admin_users_user_email' => 'Email',
+        'admin_users_user_email_confirmed' => 'Email Confirmed',
+        'admin_users_user_signup_time' => 'Signup Time',
+        'admin_users_user_status' => 'Status',
+
+        'admin_users_view_user' => 'View User',
+        'admin_users_edit_user' => 'Edit User',
+        'admin_users_block_user' => 'Block User',
+        'admin_users_unblock_user' => 'Unblock User',
+        'admin_users_delete_user' => 'Delete User',
+        'admin_users_delete_user_confirmation' => 'Are you sure you want to delete this user?',
+
+        // Admin Users View Page
+        'admin_user_view_page_title' => 'View User',
+
+        'admin_user_view_id_label' => 'ID',
+        'admin_user_view_email_confirmed_label' => 'Email Confirmed',
+        'admin_user_view_confirmed' => 'True',
+        'admin_user_view_not_confirmed' => 'False',
+        'admin_user_view_signup_time_label' => 'Signup Time',
+        'admin_user_view_status_label' => 'Status',
+        'admin_user_view_status_active' => 'Active',
+        'admin_user_view_status_blocked' => 'Blocked',
+        'admin_user_view_phrases_creaeted_label' => 'Phrases Created',
+
+        // Admin Users Edit Page
+        'admin_user_edit_page_title' => 'Edit User',
+
+        'admin_user_edit_username_label' => 'Username',
+        'admin_user_edit_email_label' => 'Email',
+        'admin_user_edit_status_label' => 'Status',
+        'admin_user_edit_status_active' => 'Active',
+        'admin_user_edit_status_blocked' => 'Blocked',
+
+        'admin_user_edit_block_user' => 'Block User',
+        'admin_user_edit_unblock_user' => 'Unblock User',
+        'admin_user_edit_delete_user' => 'Delete User',
+        'admin_user_edit_delete_user_confirmation' => 'Are you sure you want to delete this user?',
     ],
     'it' => [
         // Geral
@@ -325,7 +373,7 @@ $translations = [
         'profile_security_note' => 'Per motivi di sicurezza, non consentiamo la modifica della tua email.',
 
         // Create Page
-        'create_page_title' => 'Crea frase',
+        'create_page_title' => 'Crea Frase',
 
         'create_write_ai' => 'Scrivi con Intelligenza Artificiale',
         'create_write_generating' => 'Generazione...',
@@ -377,6 +425,54 @@ $translations = [
 
         'view_phrase_not_published' => "L'autore non ha ancora pubblicato la frase.",
         'view_phrase_not_yet_published' => "La frase non è ancora pubblicata. Tempo rimanente: ",
+
+        // Admin Users Page
+        'admin_page_title' => 'Admin',
+        'admin_users_page_title' => 'Gestisci Utenti',
+
+        'admin_users_no_users_found' => 'Nessun utente trovato.',
+        'admin_users_no_users_explanation' => 'Non hai ancora utenti creati.',
+
+        'admin_users_user_id' => 'ID',
+        'admin_users_user_name' => 'Nome',
+        'admin_users_user_email' => 'Email',
+        'admin_users_user_email_confirmed' => 'Email Confermato',
+        'admin_users_user_signup_time' => 'Data Registrazione',
+        'admin_users_user_status' => 'Stato',
+
+        'admin_users_view_user' => 'Visualizza Utente',
+        'admin_users_edit_user' => 'Modifica Utente',
+        'admin_users_block_user' => 'Blocca Utente',
+        'admin_users_unblock_user' => 'Sblocca Utente',
+        'admin_users_delete_user' => 'Elimina Utente',
+        'admin_users_delete_user_confirmation' => 'Sei sicuro di voler eliminare questo utente?',
+
+        // Admin Users View Page
+        'admin_user_view_page_title' => 'Visualizza Utente',
+
+        'admin_user_view_id_label' => 'ID',
+        'admin_user_view_email_confirmed_label' => 'Email Confermato',
+        'admin_user_view_confirmed' => 'Vero',
+        'admin_user_view_not_confirmed' => 'Falso',
+        'admin_user_view_signup_time_label' => 'Data Registrazione',
+        'admin_user_view_status_label' => 'Stato',
+        'admin_user_view_status_active' => 'Attivo',
+        'admin_user_view_status_blocked' => 'Bloccato',
+        'admin_user_view_phrases_creaeted_label' => 'Frase Creata',
+
+        // Admin Users Edit Page
+        'admin_user_edit_page_title' => 'Modifica Utente',
+
+        'admin_user_edit_username_label' => 'Nome utente',
+        'admin_user_edit_email_label' => 'Email',
+        'admin_user_edit_status_label' => 'Stato',
+        'admin_user_edit_status_active' => 'Attivo',
+        'admin_user_edit_status_blocked' => 'Bloccato',
+    
+        'admin_user_edit_block_user' => 'Blocca Utente',
+        'admin_user_edit_unblock_user' => 'Sblocca Utente',
+        'admin_user_edit_delete_user' => 'Elimina Utente',
+        'admin_user_edit_delete_user_confirmation' => 'Sei sicuro di voler eliminare questo utente?',
     ],
     'pt' => [
         // Geral
@@ -566,5 +662,53 @@ $translations = [
 
         'view_phrase_not_published' => "O autor ainda não publicou a frase.",
         'view_phrase_not_yet_published' => "A frase ainda não está publicada. Tempo restante: ",
+
+        // Admin Users Page
+        'admin_page_title' => 'Admin',
+        'admin_users_page_title' => 'Gerenciar Utilizadors',
+
+        'admin_users_no_users_found' => 'Nenhum Utilizador encontrado.',
+        'admin_users_no_users_explanation' => 'Você ainda não tem nenhum Utilizador criado.',
+
+        'admin_users_user_id' => 'ID',
+        'admin_users_user_name' => 'Nome',
+        'admin_users_user_email' => 'Email',
+        'admin_users_user_email_confirmed' => 'Email Confirmado',
+        'admin_users_user_signup_time' => 'Data de Cadastro',
+        'admin_users_user_status' => 'Status',
+
+        'admin_users_view_user' => 'Visualizar Utilizador',
+        'admin_users_edit_user' => 'Editar Utilizador',
+        'admin_users_block_user' => 'Bloquear Utilizador',
+        'admin_users_unblock_user' => 'Desbloquear Utilizador',
+        'admin_users_delete_user' => 'Deletar Utilizador',
+        'admin_users_delete_user_confirmation' => 'Tem certeza de que deseja deletar este Utilizador?',
+
+        // Admin Users View Page
+        'admin_user_view_page_title' => 'Visualizar Utilizador',
+
+        'admin_user_view_id_label' => 'ID',
+        'admin_user_view_email_confirmed_label' => 'Email Confirmado',
+        'admin_user_view_confirmed' => 'Verdadeiro',
+        'admin_user_view_not_confirmed' => 'Falso',
+        'admin_user_view_signup_time_label' => 'Data de Cadastro',
+        'admin_user_view_status_label' => 'Status',
+        'admin_user_view_status_active' => 'Ativo',
+        'admin_user_view_status_blocked' => 'Bloqueado',
+        'admin_user_view_phrases_creaeted_label' => 'Frases Criadas',
+
+        // Admin Users Edit Page
+        'admin_user_edit_page_title' => 'Editar Utilizador',
+
+        'admin_user_edit_username_label' => 'Nome de Utilizador',
+        'admin_user_edit_email_label' => 'Email',
+        'admin_user_edit_status_label' => 'Estado',
+        'admin_user_edit_status_active' => 'Ativo',
+        'admin_user_edit_status_blocked' => 'Bloqueado',
+
+        'admin_user_edit_block_user' => 'Bloquear Utilizador',
+        'admin_user_edit_unblock_user' => 'Desbloquear Utilizador',
+        'admin_user_edit_delete_user' => 'Eliminar Utilizador',
+        'admin_user_edit_delete_user_confirmation' => 'Tem a certeza de que quer eliminar este Utilizador?',
     ],
 ];

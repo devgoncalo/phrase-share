@@ -7,7 +7,17 @@ CREATE TABLE users (
     confirmation_token VARCHAR(255),
     confirmed TINYINT(1) DEFAULT 0,
     reset_token VARCHAR(255),
-    reset_token_expire TIMESTAMP   
+    reset_token_expire TIMESTAMP,
+    status TINYINT(1) DEFAULT 0,
+    signup_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    admin TINYINT(1) DEFAULT 0 
+);
+
+CREATE TABLE user_admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE phrases (
