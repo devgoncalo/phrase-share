@@ -32,7 +32,7 @@ if (isset($_POST['delete_user'])) {
   $stmt->bindParam(':user_id', $user_id);
   $stmt->execute();
 
-  header('Location: dashboard.php');
+  header('Location: overview.php');
   exit();
 }
 
@@ -42,7 +42,7 @@ if (isset($_POST['block_user'])) {
   $stmt->bindParam(':user_id', $user_id);
   $stmt->execute();
 
-  header('Location: dashboard.php');
+  header('Location: overview.php');
   exit();
 }
 
@@ -52,7 +52,7 @@ if (isset($_POST['unblock_user'])) {
   $stmt->bindParam(':user_id', $user_id);
   $stmt->execute();
 
-  header('Location: dashboard.php');
+  header('Location: overview.php');
   exit();
 }
 ?>
@@ -119,7 +119,6 @@ if (isset($_POST['unblock_user'])) {
                 <td class="h-10 truncate border-b border-neutral-700 px-3 py-3 text-sm"><?php echo $user['confirmed'] ? $trans['admin_user_view_confirmed'] : $trans['admin_user_view_not_confirmed']; ?></td>
                 <td class="h-10 truncate border-b border-neutral-700 px-3 py-3 text-sm"><?php echo $user['signup_time']; ?></td>
                 <td class="h-10 truncate border-b border-neutral-700 px-3 py-3 text-center text-sm"><?php echo $user['status'] ? $trans['admin_user_view_status_blocked'] : $trans['admin_user_view_status_active']; ?></td>
-
                 <td class="h-10 truncate border-b border-neutral-700 px-3 py-3 text-center text-sm">
                   <button id="dropdownButton_<?php echo $user['id']; ?>" type="button" class="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded border border-none bg-transparent align-middle text-neutral-400 transition duration-200 ease-in-out hover:bg-neutral-700 focus-visible:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-600 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400" aria-label="More actions">
                     <i data-lucide="ellipsis" class="size-4"></i>

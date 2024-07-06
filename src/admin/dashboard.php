@@ -88,7 +88,7 @@ $phrase_data = json_encode($phrase_data);
             <div>
               <h1 class="text-xl font-bold tracking-[-0.16px] text-neutral-100">Users Overview</h1>
               <span class="text-sm font-normal text-neutral-400">
-                Here you can see all users activity. Click <a href="./users/dashboard.php" class="text-neutral-100 underline">here</a> to manage all users.
+                Here you can see all users activity. Click <a href="./users/overview.php" class="text-neutral-100 underline">here</a> to manage all users.
               </span>
             </div>
             <div class="flex items-center">
@@ -104,7 +104,7 @@ $phrase_data = json_encode($phrase_data);
           <div class="w-full flex items-center gap-1 text-blue-300 border-t border-neutral-700 px-4 py-3">
             <i data-lucide="info" class="size-3"></i>
             <span class="text-xs font-normal">
-              You are seeing the last 7-days users registration activity.
+              You are seeing the last 7 days users registration activity.
             </span>
           </div>
         </div>
@@ -115,7 +115,7 @@ $phrase_data = json_encode($phrase_data);
             <div>
               <h1 class="text-xl font-bold tracking-[-0.16px] text-neutral-100">Phrases Overview</h1>
               <span class="text-sm font-normal text-neutral-400">
-                Here you can see all phrases activity. Click <a href="./phrases/dashboard.php" class="text-neutral-100 underline">here</a> to manage all phrases.
+                Here you can see all phrases activity. Click <a href="./phrases/overview.php" class="text-neutral-100 underline">here</a> to manage all phrases.
               </span>
             </div>
             <div class="flex items-center">
@@ -131,7 +131,7 @@ $phrase_data = json_encode($phrase_data);
           <div class="w-full flex items-center gap-1 text-blue-300 border-t border-neutral-700 px-4 py-3">
             <i data-lucide="info" class="size-3"></i>
             <span class="text-xs font-normal">
-              You are seeing the last 7-days phrases creation activity.
+              You are seeing the last 7 days phrases creation activity.
             </span>
           </div>
         </div>

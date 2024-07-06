@@ -238,6 +238,29 @@ $translations = [
         'admin_user_edit_unblock_user' => 'Unblock User',
         'admin_user_edit_delete_user' => 'Delete User',
         'admin_user_edit_delete_user_confirmation' => 'Are you sure you want to delete this user?',
+
+        // Admin Phrases Page
+        'admin_phrases_page_title' => 'Manage Phrases',
+
+        'admin_phrases_no_phrases_found' => 'No phrases found.',
+        'admin_phrases_no_phrases_explanation' => 'Users have not created any phrases yet.',
+
+        'admin_phrases_phrase_id' => 'ID',
+        'admin_phrases_phrase_title' => 'Title',
+        'admin_phrases_phrase_content' => 'Content',
+        'admin_phrases_phrase_status' => 'Status',
+        'admin_phrases_phrase_visibility' => 'Visibility',
+        'admin_phrases_phrase_visibility_public' => 'Public',
+        'admin_phrases_phrase_visibility_private' => 'Private',
+        'admin_phrases_phrase_visibility_waiting' => 'Waiting publishing',
+        'admin_phrases_phrase_creation_date' => 'Creation Date',
+
+        'admin_phrases_view_phrase' => 'View Phrase',
+        'admin_phrases_edit_phrase' => 'Edit Phrase',
+        'admin_phrases_show_phrase' => 'Show Phrase',
+        'admin_phrases_hide_phrase' => 'Hide Phrase',
+        'admin_phrases_delete_phrase' => 'Delete Phrase',
+        'admin_phrases_delete_phrase_confirmation' => 'Are you sure you want to delete this phrase?',
     ],
     'it' => [
         // Geral
@@ -477,6 +500,29 @@ $translations = [
         'admin_user_edit_unblock_user' => 'Sblocca Utente',
         'admin_user_edit_delete_user' => 'Elimina Utente',
         'admin_user_edit_delete_user_confirmation' => 'Sei sicuro di voler eliminare questo utente?',
+
+        // Admin Phrases Page
+        'admin_phrases_page_title' => 'Gestisci Frasi',
+
+        'admin_phrases_no_phrases_found' => 'Nessuna frase trovata.',
+        'admin_phrases_no_phrases_explanation' => 'Non hai ancora frasi.',
+
+        'admin_phrases_phrase_id' => 'ID',
+        'admin_phrases_phrase_title' => 'Titolo',
+        'admin_phrases_phrase_content' => 'Contenuto',
+        'admin_phrases_phrase_status' => 'Stato',
+        'admin_phrases_phrase_visibility' => 'Visibilità',
+        'admin_phrases_phrase_visibility_private' => 'Privata',
+        'admin_phrases_phrase_visibility_public' => 'Pubblica',
+        'admin_phrases_phrase_visibility_waiting' => 'In attesa di pubblicazione',
+        'admin_phrases_phrase_creation_date' => 'Data Creazione',
+
+        'admin_phrases_view_phrase' => 'Visualizza Frase',
+        'admin_phrases_edit_phrase' => 'Modifica Frase',
+        'admin_phrases_show_phrase' => 'Mostra Frase',
+        'admin_phrases_hide_phrase' => 'Nascondi Frase',
+        'admin_phrases_delete_phrase' => 'Elimina Frase',
+        'admin_phrases_delete_phrase_confirmation' => 'Sei sicuro di voler eliminare questa frase?',
     ],
     'pt' => [
         // Geral
@@ -716,5 +762,28 @@ $translations = [
         'admin_user_edit_unblock_user' => 'Desbloquear Utilizador',
         'admin_user_edit_delete_user' => 'Eliminar Utilizador',
         'admin_user_edit_delete_user_confirmation' => 'Tem a certeza de que quer eliminar este Utilizador?',
+
+        // Admin Phrases Page
+        'admin_phrases_page_title' => 'Gerenciar Frases',
+
+        'admin_phrases_no_phrases_found' => 'Nenhuma Frase encontrada.',
+        'admin_phrases_no_phrases_explanation' => 'Você ainda não criou nenhuma Frase.',
+
+        'admin_phrases_phrase_id' => 'ID',
+        'admin_phrases_phrase_title' => 'Título',
+        'admin_phrases_phrase_content' => 'Conteúdo',
+        'admin_phrases_phrase_status' => 'Status',
+        'admin_phrases_phrase_visibility' => 'Visibilidade',
+        'admin_phrases_phrase_visibility_private' => 'Privada',
+        'admin_phrases_phrase_visibility_public' => 'Pública',
+        'admin_phrases_phrase_visibility_waiting' => 'À espera de publicação',
+        'admin_phrases_phrase_creation_date' => 'Data de Criação',
+
+        'admin_phrases_view_phrase' => 'Visualizar Frase',
+        'admin_phrases_edit_phrase' => 'Editar Frase',
+        'admin_phrases_show_phrase' => 'Mostrar Frase',
+        'admin_phrases_hide_phrase' => 'Esconder Frase',
+        'admin_phrases_delete_phrase' => 'Eliminar Frase',
+        'admin_phrases_delete_phrase_confirmation' => 'Tem a certeza de que quer eliminar esta Frase?',
     ],
 ];

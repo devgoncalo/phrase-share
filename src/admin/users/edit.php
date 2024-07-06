@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   try {
     $stmt = $pdo->prepare("UPDATE users SET username = :username, email = :email, status = :status WHERE id = :user_id");
     $stmt->execute(['username' => $username, 'email' => $email, 'status' => $status, 'user_id' => $user_id]);
-    header('Location: ./dashboard.php');
+    header('Location: ./overview.php');
     exit();
   } catch (PDOException $e) {
     echo "Error updating user: " . $e->getMessage();

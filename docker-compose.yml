@@ -3,7 +3,7 @@ version: '3.9'
 services:
   db:
     image: mysql:8.0
-    container_name: phrase-sharing
+    container_name: phrase-share
     restart: always
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -19,7 +19,7 @@ services:
     build: 
       context: .
       dockerfile: dockerfile
-    container_name: phrase-sharing-php
+    container_name: phrase-share-php
     restart: always
     ports:
       - '8000:80'

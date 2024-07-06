@@ -1,6 +1,6 @@
 <?php
 $host = 'db';
-$dbname = 'phrase-sharing';
+$dbname = 'phrase-share';
 $username = 'root';
 $password = 'root';
 
@@ -10,4 +10,3 @@ try {
 } catch (PDOException $e) {
     die("Error connecting to database: " . $e->getMessage());
 }
-?>
