@@ -1,6 +1,6 @@
 <?php
 $host = 'db';
-$dbname = 'phrase-share';
+$dbname = 'phrase-sharing';
 $username = 'root';
 $password = 'root';
 

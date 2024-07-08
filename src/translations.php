@@ -191,6 +191,23 @@ $translations = [
         'view_phrase_not_published' => "The writer didn't publish the phrase yet.",
         'view_phrase_not_yet_published' => "The phrase is not yet published. Time remaining: ",
 
+        // Admin Dashboard Page
+        'admin_dashboard_page_title' => 'Admin Dashboard',
+
+        'admin_dashboard_users_title' => 'Users Overview',
+        'admin_dashboard_users_explanation' => 'Here you can see all users activity.',
+
+        'admin_dashboard_phrases_title' => 'Phrases Overview',
+        'admin_dashboard_phrases_explanation' => 'Here you can see all phrases activity.',
+
+        'admin_dashboard_filter_apply' => 'Apply',
+
+        'admin_dashboard_users_no_users_found' => 'No users found.',
+        'admin_dashboard_users_no_users_explanation' => 'You have no users created yet.',
+
+        'admin_dashboard_users_information' => 'You are seeing the last 7 days users registration activity.',
+        'admin_dashboard_phrases_information' => 'You are seeing the last 7 days phrases creation activity.',
+
         // Admin Users Page
         'admin_page_title' => 'Admin',
         'admin_users_page_title' => 'Manage Users',
@@ -452,6 +469,23 @@ $translations = [
 
         'view_phrase_not_published' => "L'autore non ha ancora pubblicato la frase.",
         'view_phrase_not_yet_published' => "La frase non è ancora pubblicata. Tempo rimanente: ",
+
+        // Admin Dashboard Page
+        'admin_dashboard_page_title' => 'Dashboard di Admin',
+
+        'admin_dashboard_users_title' => 'Panoramica degli Utenti',
+        'admin_dashboard_users_explanation' => 'Qui puoi vedere tutte le attività degli utenti.',
+
+        'admin_dashboard_phrases_title' => 'Panoramica delle Frase',
+        'admin_dashboard_phrases_explanation' => 'Qui puoi vedere tutte le attività delle frasi.',
+
+        'admin_dashboard_filter_apply' => 'Applica',
+
+        'admin_dashboard_users_no_users_found' => 'Nessun utente trovato.',
+        'admin_dashboard_users_no_users_explanation' => 'Non hai ancora utenti creati.',
+
+        'admin_dashboard_users_information' => 'Stai guardando l\'attività degli utenti nelle ultime 7 giorni.',
+        'admin_dashboard_phrases_information' => 'Stai guardando l\'attività delle frasi nelle ultime 7 giorni.',
 
         // Admin Users Page
         'admin_page_title' => 'Admin',
@@ -735,6 +769,23 @@ $translations = [
         'admin_users_unblock_user' => 'Desbloquear Utilizador',
         'admin_users_delete_user' => 'Deletar Utilizador',
         'admin_users_delete_user_confirmation' => 'Tem certeza de que deseja deletar este Utilizador?',
+
+        // Admin Dashboard Page
+        'admin_dashboard_page_title' => 'Dashboard do Admin',
+
+        'admin_dashboard_users_title' => 'Visão Geral de Utilizadores',
+        'admin_dashboard_users_explanation' => 'Aqui você pode ver todas as atividades dos usuários.',
+
+        'admin_dashboard_phrases_title' => 'Visão Geral de Frases',
+        'admin_dashboard_phrases_explanation' => 'Aqui você pode ver todas as atividades das frases.',
+
+        'admin_dashboard_filter_apply' => 'Aplicar',
+
+        'admin_dashboard_users_no_users_found' => 'Nenhum Utilizador encontrado.',
+        'admin_dashboard_users_no_users_explanation' => 'Você ainda não criou nenhum Utilizador.',
+
+        'admin_dashboard_users_information' => 'Você está vendo as atividades dos usuários nos últimos 7 dias.',
+        'admin_dashboard_phrases_information' => 'Você está vendo as atividades das frases nos últimos 7 dias.',
 
         // Admin Users View Page
         'admin_user_view_page_title' => 'Visualizar Utilizador',

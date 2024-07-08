@@ -56,7 +56,7 @@ $phrase_data = json_encode($phrase_data);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo htmlspecialchars($trans['admin_page_title']); ?> · Dashboard</title>
+  <title><?php echo htmlspecialchars($trans['admin_page_title']); ?> · <?php echo htmlspecialchars($trans['admin_dashboard_page_title']); ?></title>
   <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -66,7 +66,9 @@ $phrase_data = json_encode($phrase_data);
 <body class="min-h-screen bg-black bg-gradient-to-tr from-neutral-900/50 to-neutral-700/30 overflow-hidden text-neutral-100">
   <div class="container mx-auto py-8">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-8">
-      <h1 class="text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100">Dashboard</h1>
+      <h1 class="text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100">
+        <?php echo $trans['admin_dashboard_page_title']; ?>
+      </h1>
       <div>
         <a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../dashboard.php'; ?>" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
           <span class="inline-flex flex-row items-center gap-2">
@@ -86,9 +88,11 @@ $phrase_data = json_encode($phrase_data);
         <div class="flex h-fit flex-col items-start justify-center rounded-lg border border-neutral-700 hover:shadow-md cursor-pointer">
           <div class="w-full flex flex-row items-center justify-between border-b border-neutral-700 p-4">
             <div>
-              <h1 class="text-xl font-bold tracking-[-0.16px] text-neutral-100">Users Overview</h1>
+              <h1 class="text-xl font-bold tracking-[-0.16px] text-neutral-100">
+                <?php echo $trans['admin_dashboard_users_title']; ?>
+              </h1>
               <span class="text-sm font-normal text-neutral-400">
-                Here you can see all users activity. Click <a href="./users/overview.php" class="text-neutral-100 underline">here</a> to manage all users.
+                <?php echo $trans['admin_dashboard_users_explanation']; ?> Click <a href="./users/overview.php" class="text-neutral-100 underline">here</a> to manage all users.
               </span>
             </div>
             <div class="flex items-center">
@@ -96,7 +100,9 @@ $phrase_data = json_encode($phrase_data);
                 <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-1 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
                 <span class="mx-1 text-neutral-300">-</span>
                 <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-1 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <button type="submit" class="ml-2 px-4 py-1 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-600">Apply</button>
+                <button type="submit" class="ml-2 px-4 py-1 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-600">
+                  <?php echo $trans['admin_dashboard_filter_apply']; ?>
+                </button>
               </form>
             </div>
           </div>
@@ -104,7 +110,7 @@ $phrase_data = json_encode($phrase_data);
           <div class="w-full flex items-center gap-1 text-blue-300 border-t border-neutral-700 px-4 py-3">
             <i data-lucide="info" class="size-3"></i>
             <span class="text-xs font-normal">
-              You are seeing the last 7 days users registration activity.
+              <?php echo $trans['admin_dashboard_users_information']; ?>
             </span>
           </div>
         </div>
@@ -113,9 +119,11 @@ $phrase_data = json_encode($phrase_data);
         <div class="flex h-fit flex-col items-start justify-center rounded-lg border border-neutral-700 hover:shadow-md cursor-pointer">
           <div class="w-full flex flex-row items-center justify-between border-b border-neutral-700 p-4">
             <div>
-              <h1 class="text-xl font-bold tracking-[-0.16px] text-neutral-100">Phrases Overview</h1>
+              <h1 class="text-xl font-bold tracking-[-0.16px] text-neutral-100">
+                <?php echo $trans['admin_dashboard_phrases_title']; ?>
+              </h1>
               <span class="text-sm font-normal text-neutral-400">
-                Here you can see all phrases activity. Click <a href="./phrases/overview.php" class="text-neutral-100 underline">here</a> to manage all phrases.
+              <?php echo $trans['admin_dashboard_phrases_explanation']; ?> Click <a href="./phrases/overview.php" class="text-neutral-100 underline">here</a> to manage all phrases.
               </span>
             </div>
             <div class="flex items-center">
@@ -123,7 +131,9 @@ $phrase_data = json_encode($phrase_data);
                 <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-1 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
                 <span class="mx-1 text-neutral-300">-</span>
                 <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-1 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <button type="submit" class="ml-2 px-4 py-1 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-600">Apply</button>
+                <button type="submit" class="ml-2 px-4 py-1 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-600">
+                  <?php echo $trans['admin_dashboard_filter_apply']; ?>
+                </button>
               </form>
             </div>
           </div>
@@ -131,7 +141,7 @@ $phrase_data = json_encode($phrase_data);
           <div class="w-full flex items-center gap-1 text-blue-300 border-t border-neutral-700 px-4 py-3">
             <i data-lucide="info" class="size-3"></i>
             <span class="text-xs font-normal">
-              You are seeing the last 7 days phrases creation activity.
+              <?php echo $trans['admin_dashboard_phrases_information']; ?>
             </span>
           </div>
         </div>

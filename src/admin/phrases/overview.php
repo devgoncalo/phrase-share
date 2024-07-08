@@ -164,7 +164,7 @@ if (isset($_POST['make_private'])) {
                   <div id="dropdownMenu_<?php echo $phrase['id']; ?>"
                     class="hidden origin-top-right mt-1 absolute right-[8.75rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
                     <div class="flex flex-col gap-1 my-1">
-                      <a href="./view.php?id=<?php echo $user['id']; ?>" role="menuitem"
+                      <a href="../../phrase/view.php?id=<?php echo $phrase['id']; ?>" role="menuitem"
                         class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:border-neutral-600 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
                         <i data-lucide="eye" class="size-4"></i>
                         <span
