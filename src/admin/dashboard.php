@@ -94,7 +94,7 @@ $phrase_data = json_encode($phrase_data);
                 <?php echo $trans['admin_dashboard_users_explanation']; ?> <?php echo $trans['admin_dashboard_click']; ?> <a href="./users/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_users']; ?>
               </span>
             </div>
-            <div class="flex items-center">
+            <div class="hidden md:flex items-center">
               <form method="get" class="flex flex-row items-center gap-1">
                 <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
                 <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
@@ -127,7 +127,7 @@ $phrase_data = json_encode($phrase_data);
                 <?php echo $trans['admin_dashboard_phrases_explanation']; ?> <?php echo $trans['admin_dashboard_click']; ?> <a href="./phrases/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_phrases']; ?>
               </span>
             </div>
-            <div class="flex items-center">
+            <div class="hidden md:flex items-center">
               <form method="get" class="flex flex-row items-center gap-1">
                 <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
                 <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">

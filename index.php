@@ -44,7 +44,7 @@ $trans = $translations[$language] ?? $translations['en'];
         <div class="flex flex-col gap-8 pb-8 md:gap-16 md:pb-16 xl:pb-24">
             <div class="flex flex-col items-center justify-center max-w-3xl px-8 mx-auto mt-8 sm:min-h-screen sm:mt-0 sm:px-0">
                 <div>
-                    <h1 class="py-4 text-5xl font-bold tracking-tight text-center text-transparent bg-gradient-to-t bg-clip-text from-neutral-100/50 to-white sm:text-7xl">
+                    <h1 class="py-4 text-[2.70rem] leading-10 text-start md:text-center font-bold tracking-tight text-center text-transparent bg-gradient-to-t bg-clip-text from-neutral-100/50 to-white sm:text-7xl">
                         <?php echo htmlspecialchars($trans['home_title']); ?></br><?php echo htmlspecialchars($trans['home_sub_title']); ?>
                     </h1>
                     <p class="mt-6 leading-5 text-neutral-600 sm:text-center">

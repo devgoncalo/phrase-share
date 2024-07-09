@@ -76,11 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <div class="mx-auto max-w-5xl px-6">
-            <form class="flex flex-col gap-6" method="post" action="">
+            <form class="flex flex-col gap-6" method="post">
                 <div class="space-y-2">
                     <div class="flex justify-between">
                         <label for="title" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_title_label']); ?></label>
-
                         <button type="button" id="generate-ai" class="inline-flex cursor-pointer select-none text-sm text-white transition duration-200 ease-in-out focus-visible:bg-neutral-800 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800">
                             <div class="flex items-center gap-1">
                                 <i data-lucide="sparkles" class="size-4"></i>

@@ -153,8 +153,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="w-full space-y-2"><label class="font-medium inline-flex w-full justify-between text-sm leading-none shadow-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r7:-form-item">Password</label>
                             <div class="w-full">
-                                <div class="w-full h-[42px] px-3 flex items-center rounded-xl border border-neutral-800 focus-within:border-2 focus-within:border-[#1e1e20] focus-within:ring-2 focus-within:ring-neutral-700 bg-neutral-900 transition-all duration-200 relative data-[filled=true]:border-neutral-200">
-                                    <input placeholder="********" type="password" id="password" name="password" class="flex-1 h-full py-2 outline-none text-sm text-neutral-300 bg-transparent relative z-[9999] disabled:cursor-not-allowed shadow-inner" />
+                                <div class="w-full h-[42px] px-3 flex items-center text-neutral-300 rounded-xl border border-neutral-800 focus-within:border-2 focus-within:border-[#1e1e20] focus-within:ring-2 focus-within:ring-neutral-700 bg-neutral-900 transition-all duration-200 relative data-[filled=true]:border-neutral-200">
+                                    <input placeholder="********" type="password" id="password" name="password" class="flex-1 h-full py-2 outline-none text-sm bg-transparent relative z-[1] disabled:cursor-not-allowed shadow-inner" />
+                                    <button type="button" onclick="togglePassword()" class="cursor-pointer z-[10] absolute right-3 text-neutral-400 transition duration-200 ease-in-out hover:text-neutral-100 focus-visible:outline-none">
+                                        <i id="showEye" class="size-3.5" data-lucide="eye"></i>
+                                        <i id="hideEye" class="hidden size-3.5" data-lucide="eye-off"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -186,6 +190,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <script>
         lucide.createIcons();
+
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                document.getElementById('showEye').classList.add('hidden');
+                document.getElementById('hideEye').classList.remove('hidden');
+            } else {
+                passwordField.type = 'password';
+                document.getElementById('showEye').classList.remove('hidden');
+                document.getElementById('hideEye').classList.add('hidden');
+            }
+        }
     </script>
 </body>
 

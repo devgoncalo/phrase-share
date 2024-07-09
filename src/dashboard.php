@@ -94,7 +94,7 @@ $current_time = time();
                 <a href="phrase/create.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white px-2 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                     <span class="inline-flex flex-row items-center gap-2">
                         <i data-lucide="plus" class="size-4"></i>
-                        <span class="hidden sm:inline-flex"><?php echo htmlspecialchars($trans['dashboard_add_phrase']); ?></span>
+                        <span class=""><?php echo htmlspecialchars($trans['dashboard_add_phrase']); ?></span>
                     </span>
                 </a>
                 <?php if ($isAdmin) : ?>
