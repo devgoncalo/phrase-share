@@ -62,6 +62,35 @@ $phrase_data = json_encode($phrase_data);
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <style>
+    ::-webkit-calendar-picker-indicator {
+      background:
+        transparent;
+      bottom: 0;
+      color: transparent;
+      cursor: pointer;
+      height: auto;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    ::-webkit-calendar-picker {
+      background:
+        transparent;
+      bottom: 0;
+      color: transparent;
+      cursor: pointer;
+      height: auto;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 
 <body class="min-h-screen bg-black bg-gradient-to-tr from-neutral-900/50 to-neutral-700/30 overflow-hidden text-neutral-100">
@@ -96,9 +125,19 @@ $phrase_data = json_encode($phrase_data);
             </div>
             <div class="hidden md:flex items-center">
               <form method="get" class="flex flex-row items-center gap-1">
-                <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <button type="submit" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400"">
+                <div class="relative max-w-sm">
+                  <div class="absolute inset-y-0 end-2.5 flex items-center ps-3.5 pointer-events-none">
+                    <i data-lucide="calendar" class="size-4" onclick="document.getElementById('default-datepicker').click();"></i>
+                  </div>
+                  <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600 block">
+                </div>
+                <div class="relative max-w-sm">
+                  <div class="absolute inset-y-0 end-2.5 flex items-center ps-3.5 pointer-events-none">
+                    <i data-lucide="calendar" class="size-4" onclick="document.getElementById('default-datepicker').click();"></i>
+                  </div>
+                  <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600 block">
+                </div>
+                <button type="submit" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                   <i data-lucide="filter" class="size-4"></i>
                 </button>
                 <button type="button" onclick="exportChart('users_chart', 'users_chart_export')" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
@@ -129,8 +168,18 @@ $phrase_data = json_encode($phrase_data);
             </div>
             <div class="hidden md:flex items-center">
               <form method="get" class="flex flex-row items-center gap-1">
-                <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
+                <div class="relative max-w-sm">
+                  <div class="absolute inset-y-0 end-2.5 flex items-center ps-3.5 pointer-events-none">
+                    <i data-lucide="calendar" class="size-4" onclick="document.getElementById('default-datepicker').click();"></i>
+                  </div>
+                  <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600 block">
+                </div>
+                <div class="relative max-w-sm">
+                  <div class="absolute inset-y-0 end-2.5 flex items-center ps-3.5 pointer-events-none">
+                    <i data-lucide="calendar" class="size-4" onclick="document.getElementById('default-datepicker').click();"></i>
+                  </div>
+                  <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600 block">
+                </div>
                 <button type="submit" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                   <i data-lucide="filter" class="size-4"></i>
                 </button>
