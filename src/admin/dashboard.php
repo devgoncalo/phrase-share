@@ -61,6 +61,7 @@ $phrase_data = json_encode($phrase_data);
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 </head>
 
 <body class="min-h-screen bg-black bg-gradient-to-tr from-neutral-900/50 to-neutral-700/30 overflow-hidden text-neutral-100">
@@ -77,9 +78,7 @@ $phrase_data = json_encode($phrase_data);
           </span>
         </a>
         <a href="../dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
-          <span class="inline-flex flex-row items-center gap-2">
-            <i data-lucide="home" class="size-4"></i>
-          </span>
+          <i data-lucide="home" class="size-4"></i>
         </a>
       </div>
     </div>
@@ -96,12 +95,14 @@ $phrase_data = json_encode($phrase_data);
               </span>
             </div>
             <div class="flex items-center">
-              <form method="get">
-                <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-1 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <span class="mx-1 text-neutral-300">-</span>
-                <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-1 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <button type="submit" class="ml-2 px-4 py-1 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                  <?php echo $trans['admin_dashboard_filter_apply']; ?>
+              <form method="get" class="flex flex-row items-center gap-1">
+                <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
+                <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
+                <button type="submit" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400"">
+                  <i data-lucide="filter" class="size-4"></i>
+                </button>
+                <button type="button" onclick="exportChart('users_chart', 'users_chart_export')" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
+                  <i data-lucide="arrow-down-to-line" class="size-4"></i>
                 </button>
               </form>
             </div>
@@ -123,16 +124,18 @@ $phrase_data = json_encode($phrase_data);
                 <?php echo $trans['admin_dashboard_phrases_title']; ?>
               </h1>
               <span class="text-sm font-normal text-neutral-400">
-              <?php echo $trans['admin_dashboard_phrases_explanation']; ?> <?php echo $trans['admin_dashboard_click']; ?> <a href="./phrases/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_phrases']; ?>
+                <?php echo $trans['admin_dashboard_phrases_explanation']; ?> <?php echo $trans['admin_dashboard_click']; ?> <a href="./phrases/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_phrases']; ?>
               </span>
             </div>
             <div class="flex items-center">
-              <form method="get">
-                <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-1 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <span class="mx-1 text-neutral-300">-</span>
-                <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-1 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                <button type="submit" class="ml-2 px-4 py-1 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-600">
-                  <?php echo $trans['admin_dashboard_filter_apply']; ?>
+              <form method="get" class="flex flex-row items-center gap-1">
+                <input type="date" name="start_date" value="<?php echo htmlspecialchars($filter_start_date); ?>" class="ml-2 py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
+                <input type="date" name="end_date" value="<?php echo htmlspecialchars($filter_end_date); ?>" class="py-0.5 px-2 border border-neutral-700 rounded-md bg-transparent text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-600">
+                <button type="submit" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
+                  <i data-lucide="filter" class="size-4"></i>
+                </button>
+                <button type="button" onclick="exportChart('phrases_chart', 'phrases_chart_export')" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
+                  <i data-lucide="arrow-down-to-line" class="size-4"></i>
                 </button>
               </form>
             </div>
@@ -152,67 +155,81 @@ $phrase_data = json_encode($phrase_data);
     lucide.createIcons();
 
     document.addEventListener('DOMContentLoaded', function() {
-  var userData = <?php echo $user_data; ?>;
-  var phraseData = <?php echo $phrase_data; ?>;
+      var userData = <?php echo $user_data; ?>;
+      var phraseData = <?php echo $phrase_data; ?>;
 
-  function updateChart(data, chartId) {
-    var dates = data.map(function(item) {
-      return new Date(item.date).getTime();
+      function updateChart(data, chartId) {
+        var dates = data.map(function(item) {
+          return new Date(item.date).getTime();
+        });
+
+        var counts = data.map(function(item) {
+          return item.count;
+        });
+
+        var options = {
+          series: [{
+            name: 'Data',
+            data: counts
+          }],
+          chart: {
+            id: chartId.substring(1),
+            toolbar: {
+              show: false
+            },
+            height: 250,
+            type: 'area'
+          },
+          grid: {
+            show: false
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'smooth'
+          },
+          xaxis: {
+            type: 'datetime',
+            categories: dates,
+            labels: {
+              datetimeFormatter: {
+                year: 'yyyy',
+                month: 'MMM \'yy',
+                day: 'dd MMM',
+                hour: 'HH:mm'
+              }
+            }
+          },
+          tooltip: {
+            theme: 'dark',
+            x: {
+              format: 'dd/MM/yy'
+            },
+          },
+        };
+
+        var chart = new ApexCharts(document.querySelector(chartId), options);
+        chart.render();
+      }
+
+      updateChart(userData, "#users_chart");
+      updateChart(phraseData, "#phrases_chart");
     });
 
-    var counts = data.map(function(item) {
-      return item.count;
-    });
-
-    var options = {
-      series: [{
-        name: 'Data',
-        data: counts
-      }],
-      chart: {
-        toolbar: {
-          show: false
-        },
-        height: 250,
-        type: 'area'
-      },
-      grid: {
-        show: false
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: 'smooth'
-      },
-      xaxis: {
-        type: 'datetime',
-        categories: dates,
-        labels: {
-          datetimeFormatter: {
-            year: 'yyyy',
-            month: 'MMM \'yy',
-            day: 'dd MMM',
-            hour: 'HH:mm'
-          }
-        }
-      },
-      tooltip: {
-        theme: 'dark',
-        x: {
-          format: 'dd/MM/yy'
-        },
-      },
-    };
-
-    var chart = new ApexCharts(document.querySelector(chartId), options);
-    chart.render();
-  }
-
-  updateChart(userData, "#users_chart");
-  updateChart(phraseData, "#phrases_chart");
-});
-
+    function exportChart(chartId, chartTitle) {
+      const chart = ApexCharts.exec(chartId, 'dataURI').then(({
+        imgURI,
+        blob
+      }) => {
+        const link = document.createElement('a');
+        link.href = imgURI;
+        link.download = chartTitle + '.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    }
   </script>
 </body>
 

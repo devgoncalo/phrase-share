@@ -205,8 +205,6 @@ $translations = [
         'admin_dashboard_to_manage_users' => 'to manage all users.',
         'admin_dashboard_to_manage_phrases' => 'to manage all phrases.',
 
-        'admin_dashboard_filter_apply' => 'Apply',
-
         'admin_dashboard_users_no_users_found' => 'No users found.',
         'admin_dashboard_users_no_users_explanation' => 'You have no users created yet.',
 
@@ -489,8 +487,6 @@ $translations = [
         'admin_dashboard_to_manage_users' => 'per gestire tutti gli utenti.',
         'admin_dashboard_to_manage_phrases' => 'per gestire tutte le frasi.',
 
-        'admin_dashboard_filter_apply' => 'Applica',
-
         'admin_dashboard_users_no_users_found' => 'Nessun utente trovato.',
         'admin_dashboard_users_no_users_explanation' => 'Non hai ancora utenti creati.',
 
@@ -772,8 +768,6 @@ $translations = [
         'admin_dashboard_here' => 'aqui',
         'admin_dashboard_to_manage_users' => 'para os gerir.',
         'admin_dashboard_to_manage_phrases' => 'para as gerir.',
-
-        'admin_dashboard_filter_apply' => 'Aplicar',
 
         'admin_dashboard_users_no_users_found' => 'Nenhum Utilizador encontrado.',
         'admin_dashboard_users_no_users_explanation' => 'Você ainda não criou nenhum Utilizador.',
