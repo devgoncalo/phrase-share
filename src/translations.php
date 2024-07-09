@@ -200,6 +200,11 @@ $translations = [
         'admin_dashboard_phrases_title' => 'Phrases Overview',
         'admin_dashboard_phrases_explanation' => 'Here you can see all phrases activity.',
 
+        'admin_dashboard_click' => 'Click ',
+        'admin_dashboard_here' => 'here',
+        'admin_dashboard_to_manage_users' => 'to manage all users.',
+        'admin_dashboard_to_manage_phrases' => 'to manage all phrases.',
+
         'admin_dashboard_filter_apply' => 'Apply',
 
         'admin_dashboard_users_no_users_found' => 'No users found.',
@@ -474,10 +479,15 @@ $translations = [
         'admin_dashboard_page_title' => 'Dashboard di Admin',
 
         'admin_dashboard_users_title' => 'Panoramica degli Utenti',
-        'admin_dashboard_users_explanation' => 'Qui puoi vedere tutte le attività degli utenti.',
+        'admin_dashboard_users_explanation' => 'Qui puoi vedere le attività degli utenti.',
 
         'admin_dashboard_phrases_title' => 'Panoramica delle Frase',
-        'admin_dashboard_phrases_explanation' => 'Qui puoi vedere tutte le attività delle frasi.',
+        'admin_dashboard_phrases_explanation' => 'Qui puoi vedere le attività delle frasi.',
+
+        'admin_dashboard_click' => 'Clicca ',
+        'admin_dashboard_here' => 'qui',
+        'admin_dashboard_to_manage_users' => 'per gestire tutti gli utenti.',
+        'admin_dashboard_to_manage_phrases' => 'per gestire tutte le frasi.',
 
         'admin_dashboard_filter_apply' => 'Applica',
 
@@ -529,7 +539,7 @@ $translations = [
         'admin_user_edit_status_label' => 'Stato',
         'admin_user_edit_status_active' => 'Attivo',
         'admin_user_edit_status_blocked' => 'Bloccato',
-    
+
         'admin_user_edit_block_user' => 'Blocca Utente',
         'admin_user_edit_unblock_user' => 'Sblocca Utente',
         'admin_user_edit_delete_user' => 'Elimina Utente',
@@ -569,7 +579,7 @@ $translations = [
         'home_description' => 'Sua frase é criptografada em seu navegador antes de ser armazenada por um período limitado e para operações de leitura. Os dados não criptografados nunca deixam seu navegador.',
         'home_login_button' => 'Entrar',
         'home_register_button' => 'Registrar',
-        
+
         // Login Page
         'login_page_title' => 'Entrar',
 
@@ -749,6 +759,28 @@ $translations = [
         'view_phrase_not_published' => "O autor ainda não publicou a frase.",
         'view_phrase_not_yet_published' => "A frase ainda não está publicada. Tempo restante: ",
 
+        // Admin Dashboard Page
+        'admin_dashboard_page_title' => 'Dashboard do Admin',
+
+        'admin_dashboard_users_title' => 'Visão Geral de Utilizadores',
+        'admin_dashboard_users_explanation' => 'Está a ver toda a atividade dos utilizadores.',
+
+        'admin_dashboard_phrases_title' => 'Visão Geral de Frases',
+        'admin_dashboard_phrases_explanation' => 'Está a ver toda a atividade das frases.',
+
+        'admin_dashboard_click' => 'Clique ',
+        'admin_dashboard_here' => 'aqui',
+        'admin_dashboard_to_manage_users' => 'para os gerir.',
+        'admin_dashboard_to_manage_phrases' => 'para as gerir.',
+
+        'admin_dashboard_filter_apply' => 'Aplicar',
+
+        'admin_dashboard_users_no_users_found' => 'Nenhum Utilizador encontrado.',
+        'admin_dashboard_users_no_users_explanation' => 'Você ainda não criou nenhum Utilizador.',
+
+        'admin_dashboard_users_information' => 'Você está vendo as atividades dos usuários nos últimos 7 dias.',
+        'admin_dashboard_phrases_information' => 'Você está vendo as atividades das frases nos últimos 7 dias.',
+
         // Admin Users Page
         'admin_page_title' => 'Admin',
         'admin_users_page_title' => 'Gerenciar Utilizadors',
@@ -769,23 +801,6 @@ $translations = [
         'admin_users_unblock_user' => 'Desbloquear Utilizador',
         'admin_users_delete_user' => 'Deletar Utilizador',
         'admin_users_delete_user_confirmation' => 'Tem certeza de que deseja deletar este Utilizador?',
-
-        // Admin Dashboard Page
-        'admin_dashboard_page_title' => 'Dashboard do Admin',
-
-        'admin_dashboard_users_title' => 'Visão Geral de Utilizadores',
-        'admin_dashboard_users_explanation' => 'Aqui você pode ver todas as atividades dos usuários.',
-
-        'admin_dashboard_phrases_title' => 'Visão Geral de Frases',
-        'admin_dashboard_phrases_explanation' => 'Aqui você pode ver todas as atividades das frases.',
-
-        'admin_dashboard_filter_apply' => 'Aplicar',
-
-        'admin_dashboard_users_no_users_found' => 'Nenhum Utilizador encontrado.',
-        'admin_dashboard_users_no_users_explanation' => 'Você ainda não criou nenhum Utilizador.',
-
-        'admin_dashboard_users_information' => 'Você está vendo as atividades dos usuários nos últimos 7 dias.',
-        'admin_dashboard_phrases_information' => 'Você está vendo as atividades das frases nos últimos 7 dias.',
 
         // Admin Users View Page
         'admin_user_view_page_title' => 'Visualizar Utilizador',

@@ -92,7 +92,7 @@ $phrase_data = json_encode($phrase_data);
                 <?php echo $trans['admin_dashboard_users_title']; ?>
               </h1>
               <span class="text-sm font-normal text-neutral-400">
-                <?php echo $trans['admin_dashboard_users_explanation']; ?> Click <a href="./users/overview.php" class="text-neutral-100 underline">here</a> to manage all users.
+                <?php echo $trans['admin_dashboard_users_explanation']; ?> <?php echo $trans['admin_dashboard_click']; ?> <a href="./users/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_users']; ?>
               </span>
             </div>
             <div class="flex items-center">
@@ -123,7 +123,7 @@ $phrase_data = json_encode($phrase_data);
                 <?php echo $trans['admin_dashboard_phrases_title']; ?>
               </h1>
               <span class="text-sm font-normal text-neutral-400">
-              <?php echo $trans['admin_dashboard_phrases_explanation']; ?> Click <a href="./phrases/overview.php" class="text-neutral-100 underline">here</a> to manage all phrases.
+              <?php echo $trans['admin_dashboard_phrases_explanation']; ?> <?php echo $trans['admin_dashboard_click']; ?> <a href="./phrases/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_phrases']; ?>
               </span>
             </div>
             <div class="flex items-center">
