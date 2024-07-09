@@ -22,9 +22,19 @@ if (!$user || $user['admin'] != 1) {
 $language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
 $trans = $translations[$language] ?? $translations['en'];
 
-$stmt = $pdo->prepare("SELECT * FROM users");
+$limit = 10;
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+$stmt = $pdo->prepare("SELECT * FROM users LIMIT :start, :limit");
+$stmt->bindParam(':start', $start, PDO::PARAM_INT);
+$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$total_users_stmt = $pdo->query("SELECT COUNT(*) FROM users");
+$total_users = $total_users_stmt->fetchColumn();
+$total_pages = ceil($total_users / $limit);
 
 if (isset($_POST['delete_user'])) {
   $user_id = $_POST['user_id'];
@@ -32,7 +42,7 @@ if (isset($_POST['delete_user'])) {
   $stmt->bindParam(':user_id', $user_id);
   $stmt->execute();
 
-  header('Location: overview.php');
+  header('Location: overview.php?page=' . $page);
   exit();
 }
 
@@ -164,6 +174,42 @@ if (isset($_POST['unblock_user'])) {
             <?php endforeach; ?>
           </tbody>
         </table>
+        <?php if ($total_users > 10) : ?>
+          <div class="flex justify-between items-center mt-4">
+            <div>
+              <span class="text-sm text-neutral-400">
+                <?php echo  htmlspecialchars($trans['admin_pagination_showing']); ?>
+                <span class="text-neutral-100 font-semibold"><?php echo min(count($users), $total_users); ?></span>
+                <?php echo htmlspecialchars($trans['admin_pagination_users_of']); ?>
+                <span class="text-neutral-100 font-semibold"><?php echo $total_users; ?></span>
+                <?php echo htmlspecialchars($trans['admin_pagination_total']); ?>
+              </span>
+            </div>
+            <div class="flex items-center">
+              <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=1" class="inline-flex items-center px-2 py-1 rounded-l-md border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
+                  <span class="sr-only">First</span>
+                  <i data-lucide="chevrons-left" class="size-4"></i>
+                </a>
+                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo max(1, $page - 1); ?>" class="inline-flex items-center px-2 py-1 border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
+                  <span class="sr-only">Previous</span>
+                  <i data-lucide="chevron-left" class="size-4"></i>
+                </a>
+                <span class="inline-flex items-center px-2 py-1 border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300">
+                  <?php echo htmlspecialchars($trans['admin_pagination_page'] . $page . $trans['admin_pagination_page_of'] . $total_pages); ?>
+                </span>
+                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo min($total_pages, $page + 1); ?>" class="inline-flex items-center px-2 py-1.5  border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
+                  <span class="sr-only">Next</span>
+                  <i data-lucide="chevron-right" class="size-4"></i>
+                </a>
+                <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo $total_pages; ?>" class="inline-flex items-center px-2 py-1 rounded-r-md border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
+                  <span class="sr-only">Last</span>
+                  <i data-lucide="chevrons-right" class="size-4"></i>
+                </a>
+              </nav>
+            </div>
+          </div>
+        <?php endif; ?>
       <?php endif; ?>
     </div>
   </div>

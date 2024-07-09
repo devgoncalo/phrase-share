@@ -211,6 +211,13 @@ $translations = [
         'admin_dashboard_users_information' => 'You are seeing the last 7 days users registration activity.',
         'admin_dashboard_phrases_information' => 'You are seeing the last 7 days phrases creation activity.',
 
+        'admin_pagination_showing' => 'Showing ',
+        'admin_pagination_users_of' => 'users, of ',
+        'admin_pagination_phrases_of' => 'phrases, of ',
+        'admin_pagination_total' => 'on total.',
+        'admin_pagination_page' => 'Page ',
+        'admin_pagination_page_of' => ' of ',
+
         // Admin Users Page
         'admin_page_title' => 'Admin',
         'admin_users_page_title' => 'Manage Users',
@@ -493,6 +500,13 @@ $translations = [
         'admin_dashboard_users_information' => 'Stai guardando l\'attività degli utenti nelle ultime 7 giorni.',
         'admin_dashboard_phrases_information' => 'Stai guardando l\'attività delle frasi nelle ultime 7 giorni.',
 
+        'admin_pagination_showing' => 'Visualizzando ',
+        'admin_pagination_users_of' => 'utenti, di ',
+        'admin_pagination_phrases_of' => 'frasi, di ',
+        'admin_pagination_total' => 'in totale.',
+        'admin_pagination_page' => 'Pagina ',
+        'admin_pagination_page_of' => ' di ',
+
         // Admin Users Page
         'admin_page_title' => 'Admin',
         'admin_users_page_title' => 'Gestisci Utenti',
@@ -774,6 +788,13 @@ $translations = [
 
         'admin_dashboard_users_information' => 'Você está vendo as atividades dos usuários nos últimos 7 dias.',
         'admin_dashboard_phrases_information' => 'Você está vendo as atividades das frases nos últimos 7 dias.',
+
+        'admin_pagination_showing' => 'Mostrando ',
+        'admin_pagination_users_of' => 'utilizadores, de ',
+        'admin_pagination_phrases_of' => 'frases, de ',
+        'admin_pagination_total' => 'no total.',
+        'admin_pagination_page' => 'Página ',
+        'admin_pagination_page_of' => ' de ',
 
         // Admin Users Page
         'admin_page_title' => 'Admin',
