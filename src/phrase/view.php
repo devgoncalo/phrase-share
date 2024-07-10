@@ -87,8 +87,8 @@ if ($visibility_type == "automatic") {
         <div class="mx-auto max-w-5xl px-6">
             <div class="flex justify-center">
                 <div class="flex w-full flex-col px-6 py-8 border border-neutral-700 rounded-md">
-                    <div class="flex flex-col items-center gap-6 md:flex-row">
-                        <i data-lucide="text" class="size-16"></i>
+                    <div class="flex flex-col items-center gap-4 md:flex-row">
+                        <i data-lucide="text" class="size-14"></i>
                         <div class="w-full overflow-hidden text-center md:text-left">
                             <span class="text-sm font-semibold text-neutral-400"><?php echo $title; ?></span>
                             <?php if ($visibility_type == "manual" && $visibility == "0") : ?>
@@ -101,7 +101,7 @@ if ($visibility_type == "automatic") {
                                 <h1 class="w-full truncate text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100 md:max-w-[800px]"><?php echo $content; ?></h1>
                             <?php endif; ?>
                         </div>
-                        <div class="flex shrink-0 items-center gap-4">
+                        <div class="hidden md:flex shrink-0 items-center gap-4">
                             <nav class="mx-auto w-full max-w-[200px] space-y-2">
                                 <button id="share-btn" class="flex w-full max-w-[300px] items-center justify-between rounded-md border border-neutral-800 bg-neutral-900 p-2.5 outline-none focus-visible:ring-2 focus-visible:ring-neutral-700" tabindex="0">
                                     <i data-lucide="external-link" class="size-4"></i>
@@ -125,8 +125,8 @@ if ($visibility_type == "automatic") {
                             </nav>
                         </div>
                     </div>
-                    <div class="mt-8 flex w-full flex-wrap">
-                        <div class="flex basis-1/4 flex-col gap-1">
+                    <div class="w-full mt-8 flex flex-row gap-8 md:justify-between">
+                        <div class="flex flex-col gap-1">
                             <label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_created_label']; ?></label>
                             <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                                 <time class="group-focus-visible:border-b group-focus-visible:border-neutral-700">
@@ -134,7 +134,8 @@ if ($visibility_type == "automatic") {
                                 </time>
                             </p>
                         </div>
-                        <div class="flex basis-1/4 flex-col gap-1"><label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_visibility_label']; ?></label>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_visibility_label']; ?></label>
                             <div class="flex items-center gap-2">
                                 <?php if (
                                     $visibility == "1" &&
@@ -155,7 +156,7 @@ if ($visibility_type == "automatic") {
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <div class="flex basis-1/4 flex-col gap-1">
+                        <div class="flex flex-col gap-1">
                             <label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_visibility_type_label']; ?></label>
                             <button class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                                 <span class="inline-flex h-6 select-none items-center whitespace-nowrap rounded bg-neutral-900 px-2 text-xs font-medium text-neutral-400 group-focus-visible:ring-2 group-focus-visible:ring-neutral-700">
@@ -169,7 +170,8 @@ if ($visibility_type == "automatic") {
                                 </span>
                             </button>
                         </div>
-                        <div class="flex basis-1/4 flex-col gap-1"><label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_written_by_label']; ?></label>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_written_by_label']; ?></label>
                             <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                                 <?php echo $user["username"]; ?>
                             </p>

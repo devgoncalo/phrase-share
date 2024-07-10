@@ -111,7 +111,7 @@ $phrase_data = json_encode($phrase_data);
         </a>
       </div>
     </div>
-    <div class="flex flex-col gap-8 mx-auto max-w-5xl px-6 overflow-auto max-h-[calc(100vh-152px)]">
+    <div class="flex flex-col gap-8 mx-auto max-w-5xl px-6 overflow-auto max-h-[calc(100vh-256px)] md:max-h-[calc(100vh-152px)]">
       <div class="w-full">
         <div class="flex h-fit flex-col items-start justify-center rounded-lg border border-neutral-700 hover:shadow-md cursor-pointer">
           <div class="w-full flex flex-row items-center justify-between border-b border-neutral-700 p-4">
@@ -120,7 +120,8 @@ $phrase_data = json_encode($phrase_data);
                 <?php echo $trans['admin_dashboard_users_title']; ?>
               </h1>
               <span class="text-sm font-normal text-neutral-400">
-                <?php echo $trans['admin_dashboard_users_explanation']; ?> <?php echo $trans['admin_dashboard_click']; ?> <a href="./users/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_users']; ?>
+                <span class="hidden md:inline-flex"><?php echo $trans['admin_dashboard_users_explanation']; ?></span>
+                <?php echo $trans['admin_dashboard_click']; ?> <a href="./users/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_users']; ?>
               </span>
             </div>
             <div class="hidden md:flex items-center">
@@ -163,7 +164,8 @@ $phrase_data = json_encode($phrase_data);
                 <?php echo $trans['admin_dashboard_phrases_title']; ?>
               </h1>
               <span class="text-sm font-normal text-neutral-400">
-                <?php echo $trans['admin_dashboard_phrases_explanation']; ?> <?php echo $trans['admin_dashboard_click']; ?> <a href="./phrases/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_phrases']; ?>
+                <span class="hidden md:inline-flex"><?php echo $trans['admin_dashboard_phrases_explanation']; ?></span>
+                <?php echo $trans['admin_dashboard_click']; ?> <a href="./phrases/overview.php" class="text-neutral-100 underline"><?php echo $trans['admin_dashboard_here']; ?></a> <?php echo $trans['admin_dashboard_to_manage_phrases']; ?>
               </span>
             </div>
             <div class="hidden md:flex items-center">

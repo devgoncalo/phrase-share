@@ -2,6 +2,8 @@
 include '../database/connection.php';
 include '../translations.php';
 
+session_start();
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -10,8 +12,6 @@ require '../lib/php-mailer/src/PHPMailer.php';
 require '../lib/php-mailer/src/SMTP.php';
 
 $errors = [];
-
-session_start();
 
 if (isset($_GET['lang'])) {
     $_SESSION['language'] = $_GET['lang'];

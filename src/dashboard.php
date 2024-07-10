@@ -125,7 +125,7 @@ $current_time = time();
                 </a>
             </div>
         </div>
-        <div class="mx-auto max-w-5xl px-6">
+        <div class="mx-auto max-w-3xl overflow-x md:max-w-5xl px-6 overflow-auto max-h-[calc(100vh-152px)]">
             <?php if (empty($phrases)) : ?>
                 <div>
                     <div class="flex h-80 flex-col items-center justify-center rounded-lg border border-neutral-700 p-6">
@@ -169,7 +169,7 @@ $current_time = time();
                                     <button id="dropdownButton_<?php echo $phrase['id']; ?>" type="button" class="inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded border border-none bg-transparent align-middle text-neutral-400 transition duration-200 ease-in-out hover:bg-neutral-700 focus-visible:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-600 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400" aria-label="More actions">
                                         <i data-lucide="ellipsis" class="size-4"></i>
                                     </button>
-                                    <div id="dropdownMenu_<?php echo $phrase['id']; ?>" class="hidden origin-top-right mt-1 absolute right-[8.75rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
+                                    <div id="dropdownMenu_<?php echo $phrase['id']; ?>" class="hidden origin-top-right mt-1 absolute right-[0.75rem] md:right-[1rem] z-50 min-w-[8rem] overflow-hidden rounded-md border text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border-neutral-700 bg-neutral-900 p-1">
                                         <div class="flex flex-col gap-1 my-1">
                                             <?php if ($current_time <= strtotime($phrase['creation_time']) + (5 * 60)) : ?>
                                                 <a href="phrase/edit.php?id=<?php echo $phrase['id']; ?>" role="menuitem" class="flex items-center gap-2 rounded-sm border border-transparent px-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 focus-visible:border-neutral-600 focus-visible:bg-neutral-700 focus-visible:text-neutral-100 focus-visible:outline-none">
@@ -213,43 +213,43 @@ $current_time = time();
                     </tbody>
                 </table>
             <?php endif; ?>
-            <?php if ($total_phrases > 10) : ?>
-                <div class="flex justify-between items-center mt-4">
-                    <div>
-                        <span class="text-sm text-neutral-400">
-                            <?php echo  htmlspecialchars($trans['admin_pagination_showing']); ?>
-                            <span class="text-neutral-100 font-semibold"><?php echo min(count($phrases), $total_phrases); ?></span>
-                            <?php echo htmlspecialchars($trans['admin_pagination_phrases_of']); ?>
-                            <span class="text-neutral-100 font-semibold"><?php echo $total_phrases; ?></span>
-                            <?php echo htmlspecialchars($trans['admin_pagination_total']); ?>
-                        </span>
-                    </div>
-                    <div class="flex items-center">
-                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                            <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=1" class="inline-flex items-center px-2 py-1 rounded-l-md border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
-                                <span class="sr-only">First</span>
-                                <i data-lucide="chevrons-left" class="size-4"></i>
-                            </a>
-                            <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo max(1, $page - 1); ?>" class="inline-flex items-center px-2 py-1 border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
-                                <span class="sr-only">Previous</span>
-                                <i data-lucide="chevron-left" class="size-4"></i>
-                            </a>
-                            <span class="inline-flex items-center px-2 py-1 border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300">
-                                <?php echo htmlspecialchars($trans['admin_pagination_page'] . $page . $trans['admin_pagination_page_of'] . $total_pages); ?>
-                            </span>
-                            <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo min($total_pages, $page + 1); ?>" class="inline-flex items-center px-2 py-1.5  border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
-                                <span class="sr-only">Next</span>
-                                <i data-lucide="chevron-right" class="size-4"></i>
-                            </a>
-                            <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo $total_pages; ?>" class="inline-flex items-center px-2 py-1 rounded-r-md border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
-                                <span class="sr-only">Last</span>
-                                <i data-lucide="chevrons-right" class="size-4"></i>
-                            </a>
-                        </nav>
-                    </div>
-                </div>
-            <?php endif; ?>
         </div>
+        <?php if ($total_phrases > 10) : ?>
+            <div class="mx-auto max-w-3xl overflow-x md:max-w-5xl px-4 flex justify-between items-center mt-4">
+                <div class="ml-2">
+                    <span class="text-xs md:text-sm text-neutral-400">
+                        <?php echo  htmlspecialchars($trans['admin_pagination_showing']); ?>
+                        <span class="text-neutral-100 font-semibold"><?php echo min(count($phrases), $total_phrases); ?></span>
+                        <?php echo htmlspecialchars($trans['admin_pagination_phrases_of']); ?>
+                        <span class="text-neutral-100 font-semibold"><?php echo $total_phrases; ?></span>
+                        <?php echo htmlspecialchars($trans['admin_pagination_total']); ?>
+                    </span>
+                </div>
+                <div class="flex items-center md:mr-2">
+                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=1" class="inline-flex items-center px-1 py-0.5 md:px-2 md:py-1 rounded-l-md border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
+                            <span class="sr-only">First</span>
+                            <i data-lucide="chevrons-left" class="size-4"></i>
+                        </a>
+                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo max(1, $page - 1); ?>" class="inline-flex items-center px-1 py-0.5 md:px-2 md:py-1 border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
+                            <span class="sr-only">Previous</span>
+                            <i data-lucide="chevron-left" class="size-4"></i>
+                        </a>
+                        <span class="inline-flex items-center px-1 py-0.5 md:px-2 md:py-1 border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300">
+                            <?php echo htmlspecialchars($trans['admin_pagination_page'] . $page . $trans['admin_pagination_page_of'] . $total_pages); ?>
+                        </span>
+                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo min($total_pages, $page + 1); ?>" class="inline-flex items-center px-1 py-0.5 md:px-2 md:py-1.5  border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
+                            <span class="sr-only">Next</span>
+                            <i data-lucide="chevron-right" class="size-4"></i>
+                        </a>
+                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=<?php echo $total_pages; ?>" class="inline-flex items-center px-1 py-0.5 md:px-2 md:py-1 rounded-r-md border border-neutral-700 bg-neutral-800 text-sm font-medium text-neutral-300 hover:bg-neutral-700">
+                            <span class="sr-only">Last</span>
+                            <i data-lucide="chevrons-right" class="size-4"></i>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
     <script>
         lucide.createIcons();

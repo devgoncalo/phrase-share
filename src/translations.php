@@ -228,7 +228,7 @@ $translations = [
         'admin_users_user_id' => 'ID',
         'admin_users_user_name' => 'Name',
         'admin_users_user_email' => 'Email',
-        'admin_users_user_email_confirmed' => 'Email Confirmed',
+        'admin_users_user_email_confirmed' => 'Confirmed',
         'admin_users_user_signup_time' => 'Signup Time',
         'admin_users_user_status' => 'Status',
 
@@ -243,7 +243,7 @@ $translations = [
         'admin_user_view_page_title' => 'View User',
 
         'admin_user_view_id_label' => 'ID',
-        'admin_user_view_email_confirmed_label' => 'Email Confirmed',
+        'admin_user_view_email_confirmed_label' => 'Confirmed',
         'admin_user_view_confirmed' => 'True',
         'admin_user_view_not_confirmed' => 'False',
         'admin_user_view_signup_time_label' => 'Signup Time',
@@ -517,7 +517,7 @@ $translations = [
         'admin_users_user_id' => 'ID',
         'admin_users_user_name' => 'Nome',
         'admin_users_user_email' => 'Email',
-        'admin_users_user_email_confirmed' => 'Email Confermato',
+        'admin_users_user_email_confirmed' => 'Confermato',
         'admin_users_user_signup_time' => 'Data Registrazione',
         'admin_users_user_status' => 'Stato',
 
@@ -532,7 +532,7 @@ $translations = [
         'admin_user_view_page_title' => 'Visualizza Utente',
 
         'admin_user_view_id_label' => 'ID',
-        'admin_user_view_email_confirmed_label' => 'Email Confermato',
+        'admin_user_view_email_confirmed_label' => 'Confermato',
         'admin_user_view_confirmed' => 'Vero',
         'admin_user_view_not_confirmed' => 'Falso',
         'admin_user_view_signup_time_label' => 'Data Registrazione',
@@ -806,7 +806,7 @@ $translations = [
         'admin_users_user_id' => 'ID',
         'admin_users_user_name' => 'Nome',
         'admin_users_user_email' => 'Email',
-        'admin_users_user_email_confirmed' => 'Email Confirmado',
+        'admin_users_user_email_confirmed' => 'Confirmado',
         'admin_users_user_signup_time' => 'Data de Cadastro',
         'admin_users_user_status' => 'Status',
 
@@ -821,7 +821,7 @@ $translations = [
         'admin_user_view_page_title' => 'Visualizar Utilizador',
 
         'admin_user_view_id_label' => 'ID',
-        'admin_user_view_email_confirmed_label' => 'Email Confirmado',
+        'admin_user_view_email_confirmed_label' => 'Confirmado',
         'admin_user_view_confirmed' => 'Verdadeiro',
         'admin_user_view_not_confirmed' => 'Falso',
         'admin_user_view_signup_time_label' => 'Data de Cadastro',

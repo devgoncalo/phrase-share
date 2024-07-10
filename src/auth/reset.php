@@ -2,9 +2,9 @@
 include '../database/connection.php';
 include '../translations.php';
 
-$errors = [];
-
 session_start();
+
+$errors = [];
 
 if (isset($_GET['lang'])) {
   $_SESSION['language'] = $_GET['lang'];

@@ -75,27 +75,27 @@ $phrases_created = $phrases_stmt->fetchColumn();
     <div class="mx-auto max-w-5xl px-6">
       <div class="flex justify-center">
         <div class="flex w-full flex-col px-6 py-8 border border-neutral-700 rounded-md">
-          <div class="flex flex-col items-center gap-6 md:flex-row">
-            <i data-lucide="user" class="size-16"></i>
+          <div class="flex flex-col items-center gap-2 md:flex-row">
+            <i data-lucide="user" class="size-14"></i>
             <div class="w-full overflow-hidden text-center md:text-left">
               <span class="text-md font-bold text-neutral-400"><?php echo htmlspecialchars($username); ?></span>
               <h1 class="w-full font-semibold truncate text-lg leading-[34px] tracking-[-0.416px] text-neutral-100 md:max-w-[800px]"><?php echo $email; ?></h1>
             </div>
           </div>
-          <div class="mt-8 flex w-full flex-wrap">
-            <div class="flex basis-36 flex-col gap-1">
+          <div class="w-full mt-8 flex flex-row gap-4 md:justify-between">
+            <div class="flex flex-col gap-1">
               <label class="text-xs uppercase text-neutral-400"><?php echo $trans['admin_user_view_id_label']; ?></label>
               <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                 <?php echo $user_id; ?>
               </p>
             </div>
-            <div class="flex basis-52 flex-col gap-1">
+            <div class="flex flex-col gap-1">
               <label class="text-xs uppercase text-neutral-400"><?php echo $trans['admin_user_view_email_confirmed_label']; ?></label>
               <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                 <?php echo $email_confirmed == 1 ? $trans['admin_user_view_confirmed'] : $trans['admin_user_view_not_confirmed']; ?>
               </p>
             </div>
-            <div class="flex basis-56 flex-col gap-1">
+            <div class="flex flex-col gap-1">
               <label class="text-xs uppercase text-neutral-400"><?php echo $trans['admin_user_view_signup_time_label']; ?></label>
               <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                 <time class="group-focus-visible:border-b group-focus-visible:border-neutral-700">
@@ -103,13 +103,13 @@ $phrases_created = $phrases_stmt->fetchColumn();
                 </time>
               </p>
             </div>
-            <div class="flex basis-44 flex-col gap-1">
+            <div class="flex flex-col gap-1">
               <label class="text-xs uppercase text-neutral-400"><?php echo $trans['admin_user_view_status_label']; ?></label>
               <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
               <?php echo $status == 1 ? $trans['admin_user_view_status_blocked'] : $trans['admin_user_view_status_active']; ?>
               </p>
             </div>
-            <div class="flex basis-40 flex-col gap-1">
+            <div class="flex flex-col gap-1">
               <label class="text-xs uppercase text-neutral-400"><?php echo $trans['admin_user_view_phrases_creaeted_label']; ?></label>
               <p class="group text-start text-sm font-normal focus-visible:outline-none text-current">
                 <?php echo $phrases_created; ?>
