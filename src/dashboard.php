@@ -22,6 +22,12 @@ $user = $stmt->fetch();
 
 $isAdmin = $user && $user['admin'] == 1;
 
+$stmt = $pdo->prepare("SELECT status FROM users WHERE id = :user_id");
+$stmt->bindParam(':user_id', $user_id);
+$stmt->execute();
+$user = $stmt->fetch();
+$isBlocked = $user && $user['status'] == 1;
+
 $limit = 10;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $start = ($page - 1) * $limit;
@@ -105,12 +111,14 @@ $current_time = time();
                 <?php echo htmlspecialchars($trans['dashboard_page_title']); ?>
             </h1>
             <div>
+                <?php if (!$isBlocked) : ?>
                 <a href="phrase/create.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white px-2 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
                     <span class="inline-flex flex-row items-center gap-2">
                         <i data-lucide="plus" class="size-4"></i>
-                        <span class=""><?php echo htmlspecialchars($trans['dashboard_add_phrase']); ?></span>
+                        <span class="hidden md:flex"><?php echo htmlspecialchars($trans['dashboard_add_phrase']); ?></span>
                     </span>
                 </a>
+                <?php endif; ?>
                 <?php if ($isAdmin) : ?>
                     <a href="./admin/dashboard.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md px-2 text-sm font-semibold text-white transition duration-200 ease-in-out bg-neutral-800 hover:bg-neutral-700 focus-visible:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400    ">
                         <span class="inline-flex flex-row items-center gap-2">
@@ -126,7 +134,17 @@ $current_time = time();
             </div>
         </div>
         <div class="mx-auto max-w-3xl overflow-x md:max-w-5xl px-6 overflow-auto max-h-[calc(100vh-152px)]">
-            <?php if (empty($phrases)) : ?>
+            <?php if ($isBlocked) : ?>
+                <div>
+                    <div class="flex h-80 flex-col items-center justify-center rounded-lg border border-red-600 bg-red-600/10 p-6">
+                        <div class="mb-8 flex max-w-md flex-col gap-2 text-center">
+                            <i data-lucide="ban" class="mx-auto size-10 text-red-600"></i> 
+                            <h2 class="text-xl font-bold tracking-[-0.16px] text-neutral-100">You have been blocked.</h2>
+                            <span class="text-sm font-normal text-neutral-400">Your account has been blocked due to a violation of our community guidelines. We take these matters seriously to ensure a safe and positive experience for all our users.</span>
+                        </div>
+                    </div>
+                </div>
+            <?php elseif (empty($phrases)) : ?>
                 <div>
                     <div class="flex h-80 flex-col items-center justify-center rounded-lg border border-neutral-700 p-6">
                         <div class="mb-8 flex max-w-md flex-col gap-2 text-center">

@@ -9,6 +9,11 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+if (isset($_SESSION['status']) && $_SESSION['status'] == 1) {
+    header('Location: ../dashboard.php');
+    exit();
+}
+
 if (!isset($_GET['id'])) {
     header('Location: ../dashboard.php');
     exit();

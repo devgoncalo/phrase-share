@@ -52,6 +52,8 @@ if (isset($_POST['block_user'])) {
   $stmt->bindParam(':user_id', $user_id);
   $stmt->execute();
 
+  $_SESSION['status'] = 1;
+
   header('Location: overview.php');
   exit();
 }
@@ -61,6 +63,8 @@ if (isset($_POST['unblock_user'])) {
   $stmt = $pdo->prepare("UPDATE users SET status = 0 WHERE id = :user_id");
   $stmt->bindParam(':user_id', $user_id);
   $stmt->execute();
+
+  $_SESSION['status'] = 0;
 
   header('Location: overview.php');
   exit();

@@ -167,7 +167,7 @@ $translations = [
         // Share Page
         'share_page_title' => 'Share Phrase',
 
-        'share_use_url_label' => 'Use the following URL to share the phrase:',
+        'share_use_url_label' => 'Use the following link to share your phrase:',
         'share_visibility_note' => 'You need to make the visibility public for people to see your phrase.',
 
         'share_loading_text' => 'Loading...',
@@ -453,7 +453,7 @@ $translations = [
         // Share Page
         'share_page_title' => 'Condividi Frase',
 
-        'share_use_url_label' => 'Utilizza il seguente URL per condividere la frase:',
+        'share_use_url_label' => 'Utilizza il seguente link per condividere la frase:',
         'share_visibility_note' => 'Devi rendere la visibilità pubblica affinché le persone possano vedere la tua frase.',
 
         'share_loading_text' => 'Caricamento...',
@@ -739,7 +739,7 @@ $translations = [
         // Share Page
         'share_page_title' => 'Partilhar Frase',
 
-        'share_use_url_label' => 'Utilize o seguinte URL para partilhar a frase:',
+        'share_use_url_label' => 'Utilize o seguinte link para partilhar a sua frase:',
         'share_visibility_note' => 'Precisa de tornar a visibilidade pública para que as pessoas possam ver a sua frase.',
 
         'share_loading_text' => 'A carregar...',

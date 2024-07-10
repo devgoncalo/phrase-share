@@ -9,6 +9,11 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+if (isset($_SESSION['status']) && $_SESSION['status'] == 1) {
+    header('Location: ../dashboard.php');
+    exit();
+}
+
 $language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
 $trans = $translations[$language] ?? $translations['en'];
 

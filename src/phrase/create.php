@@ -11,6 +11,11 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+if (isset($_SESSION['status']) && $_SESSION['status'] == 1) {
+    header('Location: ../dashboard.php');
+    exit();
+}
+
 $language = isset($_SESSION['language']) ? $_SESSION['language'] : 'en';
 $trans = $translations[$language] ?? $translations['en'];
 
@@ -79,7 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </span>
             </a>
         </div>
-
         <div class="mx-auto max-w-5xl px-6">
             <form class="flex flex-col gap-6" method="post">
                 <div class="space-y-2">

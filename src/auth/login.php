@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($user['confirmed'] == 1) {
                     $_SESSION['email'] = $email;
                     $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['status'] = $user['status'];
 
                     header('Location: ../dashboard.php');
                     exit();
