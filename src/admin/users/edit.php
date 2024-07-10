@@ -68,7 +68,7 @@ if (isset($_GET['id'])) {
       <h1 class="text-[28px] font-bold leading-[34px] tracking-[-0.416px] text-neutral-100">
         <?php echo htmlspecialchars($trans['admin_user_edit_page_title']) ?>
       </h1>
-      <a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : './overview.php'; ?>" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
+      <a href="./overview.php" class="inline-flex h-8 cursor-pointer select-none items-center justify-center gap-1 rounded-md border border-neutral-700 bg-white pl-3 pr-3 text-sm font-semibold text-black transition duration-200 ease-in-out hover:bg-white/90 focus-visible:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-400">
         <span class="inline-flex flex-row items-center gap-2">
           <i data-lucide="arrow-left" class="size-4"></i>
           <?php echo $trans['general_go_back']; ?>
