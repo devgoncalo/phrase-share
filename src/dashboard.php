@@ -87,8 +87,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$creation_time = strtotime($phrase["creation_time"]);
 $current_time = time();
+if ($visibility_type == "automatic") {
+    foreach ($phrases as $phrase) {
+        $show_time = strtotime($phrase["show_time"]);
+        if ($current_time > $show_time && $phrase['visibility'] == "0") {
+            $stmt = $pdo->prepare("UPDATE phrases SET visibility = 1 WHERE id = :id");
+            $stmt->execute(["id" => $phrase['id']]);
+
+            echo "<script>window.location.reload();</script>";
+            exit();
+        }
+    }
+}
 
 ?>
 
@@ -178,7 +189,13 @@ $current_time = time();
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-sm"><?php echo $phrase['content']; ?></td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-sm"><?php echo date('Y-m-d H:i:s', strtotime($phrase['creation_time'] . ' +2 hours')); ?></td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-xs text-center text-sm">
-                                    <?php echo $phrase['visibility'] == '1' ? 'Public' : 'Private'; ?>
+                                    <?php if ( $phrase['visibility'] == '0' && $phrase['visibility_type'] == "automatic") : ?>
+                                        <?php echo $trans['view_status_waiting']; ?>
+                                    <?php elseif ($phrase['visibility'] == "1") : ?>
+                                        <?php echo $trans['view_status_public']; ?>
+                                    <?php elseif ($phrase['visibility'] == "0") : ?>
+                                        <?php echo $trans['view_status_private']; ?>
+                                    <?php endif; ?>
                                 </td>
                                 <td class="h-10 truncate border-b border-neutral-700 px-3 text-right text-xs text-center text-sm">
                                     <?php echo $phrase['visibility_type'] == "automatic" ? 'Automatic' : 'Manual'; ?>

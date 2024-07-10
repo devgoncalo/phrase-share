@@ -52,6 +52,13 @@ if ($visibility_type == "automatic") {
             ".";
     } else {
         $content = $phrase["content"];
+        
+        if ($visibility == "0") {
+            $stmt = $pdo->prepare("UPDATE phrases SET visibility = 1 WHERE id = :id");
+            $stmt->execute(["id" => $phrase_id]);
+            
+            echo "<script>window.location.reload();</script>";
+        }
     }
 }
 ?>
@@ -138,7 +145,7 @@ if ($visibility_type == "automatic") {
                             <label class="text-xs uppercase text-neutral-400"><?php echo $trans['view_visibility_label']; ?></label>
                             <div class="flex items-center gap-2">
                                 <?php if (
-                                    $visibility == "1" &&
+                                    $visibility == "0" &&
                                     $visibility_type == "automatic" &&
                                     $remaining_time > 0
                                 ) : ?>

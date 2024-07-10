@@ -183,7 +183,7 @@ $translations = [
 
         'view_status_private' => 'Private',
         'view_status_public' => 'Public',
-        'view_status_waiting' => 'Waiting publishing',
+        'view_status_waiting' => 'Waiting Publishing',
 
         'view_phrase_not_published' => "The writer didn't publish the phrase yet.",
         'view_phrase_not_yet_published' => "The phrase is not yet published. Time remaining: ",
@@ -469,7 +469,7 @@ $translations = [
 
         'view_status_private' => 'Privato',
         'view_status_public' => 'Pubblico',
-        'view_status_waiting' => 'In attesa di pubblicazione',
+        'view_status_waiting' => 'Attesa di Pubblicazione',
 
         'view_phrase_not_published' => "L'autore non ha ancora pubblicato la frase.",
         'view_phrase_not_yet_published' => "La frase non è ancora pubblicata. Tempo rimanente: ",
@@ -755,7 +755,7 @@ $translations = [
 
         'view_status_private' => 'Privado',
         'view_status_public' => 'Público',
-        'view_status_waiting' => 'À espera de publicação',
+        'view_status_waiting' => 'Publicação em Espera',
 
         'view_phrase_not_published' => "O autor ainda não publicou a frase.",
         'view_phrase_not_yet_published' => "A frase ainda não está publicada. Tempo restante: ",

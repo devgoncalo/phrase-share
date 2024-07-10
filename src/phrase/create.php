@@ -36,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $visibility = 0;
     $visibility_type = $_POST['visibility_type'];
-    $visibility = ($_POST['visibility_type'] == 'automatic') ? 1 : 0;
     $show_time = ($_POST['visibility_type'] == 'automatic') ? date('Y-m-d H:i:s', strtotime($_POST['show_time'])) : null;
 
     if ($visibility_type == 'automatic' && strtotime($show_time) < time()) {
