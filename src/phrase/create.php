@@ -83,16 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="mx-auto max-w-5xl px-6">
             <form class="flex flex-col gap-6" method="post">
                 <div class="space-y-2">
-                    <div class="flex justify-between">
-                        <label for="title" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_title_label']); ?></label>
-                        <button type="button" id="generate-ai" class="inline-flex cursor-pointer select-none text-sm text-white transition duration-200 ease-in-out focus-visible:bg-neutral-800 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-neutral-800">
-                            <div class="flex items-center gap-1">
-                                <i data-lucide="sparkles" class="size-4"></i>
-                                <span id="generate-text"><?php echo htmlspecialchars($trans['create_write_ai']); ?></span>
-                                <span id="loading-text" class="hidden"><?php echo htmlspecialchars($trans['create_write_generating']); ?></span>
-                            </div>
-                        </button>
-                    </div>
+                    <label for="title" class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-normal text-neutral-400"><?php echo htmlspecialchars($trans['create_title_label']); ?></label>
                     <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($title); ?>" class="flex w-full rounded-md py-2 text-sm outline-none ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 disabled:cursor-not-allowed disabled:opacity-50 h-8 border border-neutral-700 bg-neutral-900 px-2 text-neutral-100 transition duration-200 ease-in-out placeholder:text-neutral-500">
                 </div>
                 <div class="space-y-2">
@@ -140,41 +131,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 showTimeInput.classList.remove('hidden');
             } else {
                 showTimeInput.classList.add('hidden');
-            }
-        });
-
-        document.getElementById('generate-ai').addEventListener('click', async function() {
-            const prompt = "Generate a title and a phrase. WITH NO OTHER TEXT BEFORE THE TITLE OR AFTER THE PHRASE. The response should be formatted as followed 'title; phrase' and with the following rules:\n\n1. The response must be a string with the format 'title; phrase'.\n2. There should be no newline characters or backticks in the response.\n3. The response should be returned without any additional formatting or characters.\n4. Ensure that the title and phrase are meaningful and coherent.\n5. The phrase SHOULD NOT EXCEED 56 CHARACTERS.\n\nReturn the response with the title and phrase.";
-            const model = "llama3";
-
-            document.getElementById('generate-text').classList.add('hidden');
-            document.getElementById('loading-text').classList.remove('hidden');
-
-            try {
-                const response = await fetch('http://localhost:11434/api/generate', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        model: model,
-                        prompt: prompt,
-                        stream: false,
-                    })
-                });
-
-                const responseData = await response.text();
-                const data = JSON.parse(responseData);
-
-                const [title, phrase] = data.response.split(';').map(item => item.trim());
-
-                document.getElementById('title').value = title.replace(/^"|"$/g, '');
-                document.getElementById('content').value = phrase.replace(/^"|"$/g, '');
-
-                document.getElementById('generate-text').classList.remove('hidden');
-                document.getElementById('loading-text').classList.add('hidden');
-            } catch (error) {
-                console.error('Error generating title and phrase: ' + error.message);
             }
         });
     </script>

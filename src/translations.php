@@ -140,9 +140,6 @@ $translations = [
         // Create Page
         'create_page_title' => 'Create Phrase',
 
-        'create_write_ai' => 'Write with Artificial Intelligence',
-        'create_write_generating' => 'Generating...',
-
         'create_title_label' => 'Phrase Title:',
         'create_content_label' => 'Phrase Content:',
         'create_visibility_label' => 'Visibility:',
@@ -429,9 +426,6 @@ $translations = [
         // Create Page
         'create_page_title' => 'Crea Frase',
 
-        'create_write_ai' => 'Scrivi con Intelligenza Artificiale',
-        'create_write_generating' => 'Generazione...',
-
         'create_title_label' => 'Titolo della Frase:',
         'create_content_label' => 'Contenuto della Frase:',
         'create_visibility_label' => 'Visibilità:',
@@ -717,9 +711,6 @@ $translations = [
 
         // Create Page
         'create_page_title' => 'Criar Frase',
-
-        'create_write_ai' => 'Escrever com Inteligência Artificial',
-        'create_write_generating' => 'A gerar frase...',
 
         'create_title_label' => 'Título da Frase:',
         'create_content_label' => 'Conteúdo da Frase:',
