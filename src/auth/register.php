@@ -25,6 +25,10 @@ if (isset($_SESSION['user_id'])) {
     exit();
 }
 
+function generateUniqueId($length = 8) {
+    return substr(bin2hex(random_bytes($length)), 0, $length);
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? '';
     $email = $_POST['email'] ?? '';
@@ -65,9 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors[] = $trans['register_email_exists'];
         } else {
             $token = bin2hex(random_bytes(16));
+            $user_id = generateUniqueId();
 
-            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, language, confirmation_token) VALUES (:username, :email, :password, :language, :token)");
-            $stmt->execute(['username' => $username, 'email' => $email, 'password' => $passwordHash, 'language' => $language, 'token' => $token]);
+            $stmt = $pdo->prepare("INSERT INTO users (id, username, email, password, language, confirmation_token) VALUES (:id, :username, :email, :password, :language, :token)");
+            $stmt->execute(['id' => $user_id, 'username' => $username, 'email' => $email, 'password' => $passwordHash, 'language' => $language, 'token' => $token]);
 
             $confirmation_link = "http://localhost:8000/src/auth/confirm.php?token=" . $token;
             if (isset($_SESSION['language'])) {

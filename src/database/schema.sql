@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id VARCHAR(8) PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -14,8 +14,8 @@ CREATE TABLE users (
 );
 
 CREATE TABLE phrases (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    id VARCHAR(8) PRIMARY KEY,
+    user_id VARCHAR(8) NOT NULL,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     visibility_type ENUM('automatic', 'manual') DEFAULT 'automatic',

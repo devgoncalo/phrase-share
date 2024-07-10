@@ -17,6 +17,10 @@ $trans = $translations[$language] ?? $translations['en'];
 $title = '';
 $content = '';
 
+function generateUniqueId($length = 8) {
+    return substr(bin2hex(random_bytes($length)), 0, $length);
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
@@ -37,8 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = $trans['create_content_length_error'];
     } else {
         try {
-            $stmt = $pdo->prepare("INSERT INTO phrases (user_id, title, content, visibility_type, visibility, show_time) VALUES (:user_id, :title, :content, :visibility_type, :visibility, :show_time)");
-            $stmt->execute(['user_id' => $user_id, 'title' => $title, 'content' => $content, 'visibility_type' => $visibility_type, 'visibility' => $visibility, 'show_time' => $show_time]);
+            $phrase_id = generateUniqueId();
+            $stmt = $pdo->prepare("INSERT INTO phrases (id, user_id, title, content, visibility_type, visibility, show_time) VALUES (:id, :user_id, :title, :content, :visibility_type, :visibility, :show_time)");
+            $stmt->execute(['id' => $phrase_id, 'user_id' => $user_id, 'title' => $title, 'content' => $content, 'visibility_type' => $visibility_type, 'visibility' => $visibility, 'show_time' => $show_time]);
             header('Location: ../dashboard.php');
             exit();
         } catch (PDOException $e) {
