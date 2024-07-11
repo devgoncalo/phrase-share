@@ -1,0 +1,4 @@
+docker exec -i phrase-share mysql -u root -proot -e "DROP DATABASE IF EXISTS `phrase-share`;"
+docker exec -i phrase-share mysql -u root -proot -e "CREATE DATABASE `phrase-share`;"
+docker exec -i phrase-share mysql -u root -proot phrase-share < ./src/database/schema.sql
+docker exec -i phrase-share mysql -u root -proot phrase-share < ./src/database/seed.sql

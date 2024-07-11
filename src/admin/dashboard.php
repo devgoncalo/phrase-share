@@ -149,7 +149,7 @@ $phrase_data = json_encode($phrase_data);
           </div>
           <div id="users_chart" style="width: 100%; height: 200px;" class="py-3"></div>
           <div class="w-full flex items-center gap-1 text-blue-300 border-t border-neutral-700 px-4 py-3">
-            <i data-lucide="info" class="size-3"></i>
+            <i data-lucide="info" class="size-3 hidden md:inline-flex"></i>
             <span class="text-xs font-normal">
               <?php echo $trans['admin_dashboard_users_information']; ?>
             </span>
@@ -193,7 +193,7 @@ $phrase_data = json_encode($phrase_data);
           </div>
           <div id="phrases_chart" style="width: 100%; height: 200px;" class="py-3"></div>
           <div class="w-full flex items-center gap-1 text-blue-300 border-t border-neutral-700 px-4 py-3">
-            <i data-lucide="info" class="size-3"></i>
+            <i data-lucide="info" class="size-3 hidden md:inline-flex"></i>
             <span class="text-xs font-normal">
               <?php echo $trans['admin_dashboard_phrases_information']; ?>
             </span>

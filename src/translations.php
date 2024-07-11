@@ -189,7 +189,7 @@ $translations = [
         'view_phrase_not_yet_published' => "The phrase is not yet published. Time remaining: ",
 
         // Admin Dashboard Page
-        'admin_dashboard_page_title' => 'Admin Dashboard',
+        'admin_dashboard_page_title' => 'Admin',
 
         'admin_dashboard_users_title' => 'Users Overview',
         'admin_dashboard_users_explanation' => 'Here you can see all users activity.',
@@ -217,7 +217,7 @@ $translations = [
 
         // Admin Users Page
         'admin_page_title' => 'Admin',
-        'admin_users_page_title' => 'Manage Users',
+        'admin_users_page_title' => 'Users',
 
         'admin_users_no_users_found' => 'No users found.',
         'admin_users_no_users_explanation' => 'You have no users created yet.',
@@ -264,7 +264,7 @@ $translations = [
         'admin_user_edit_delete_user_confirmation' => 'Are you sure you want to delete this user?',
 
         // Admin Phrases Page
-        'admin_phrases_page_title' => 'Manage Phrases',
+        'admin_phrases_page_title' => 'Phrases',
 
         'admin_phrases_no_phrases_found' => 'No phrases found.',
         'admin_phrases_no_phrases_explanation' => 'Users have not created any phrases yet.',
@@ -288,7 +288,7 @@ $translations = [
     ],
     'it' => [
         // Geral
-        'general_go_back' => 'Torna indietro',
+        'general_go_back' => 'Torna',
         'error_occurred' => 'Si è verificato un errore. Riprova più tardi.',
 
         // Home Page
@@ -475,7 +475,7 @@ $translations = [
         'view_phrase_not_yet_published' => "La frase non è ancora pubblicata. Tempo rimanente: ",
 
         // Admin Dashboard Page
-        'admin_dashboard_page_title' => 'Dashboard di Admin',
+        'admin_dashboard_page_title' => 'Admin',
 
         'admin_dashboard_users_title' => 'Panoramica degli Utenti',
         'admin_dashboard_users_explanation' => 'Qui puoi vedere le attività degli utenti.',
@@ -761,7 +761,7 @@ $translations = [
         'view_phrase_not_yet_published' => "A frase ainda não está publicada. Tempo restante: ",
 
         // Admin Dashboard Page
-        'admin_dashboard_page_title' => 'Dashboard do Admin',
+        'admin_dashboard_page_title' => 'Admin',
 
         'admin_dashboard_users_title' => 'Visão Geral de Utilizadores',
         'admin_dashboard_users_explanation' => 'Está a ver toda a atividade dos utilizadores.',
@@ -789,7 +789,7 @@ $translations = [
 
         // Admin Users Page
         'admin_page_title' => 'Admin',
-        'admin_users_page_title' => 'Gerenciar Utilizadors',
+        'admin_users_page_title' => 'Utilizadores',
 
         'admin_users_no_users_found' => 'Nenhum Utilizador encontrado.',
         'admin_users_no_users_explanation' => 'Você ainda não tem nenhum Utilizador criado.',
@@ -836,7 +836,7 @@ $translations = [
         'admin_user_edit_delete_user_confirmation' => 'Tem a certeza de que quer eliminar este Utilizador?',
 
         // Admin Phrases Page
-        'admin_phrases_page_title' => 'Gerenciar Frases',
+        'admin_phrases_page_title' => 'Frases',
 
         'admin_phrases_no_phrases_found' => 'Nenhuma Frase encontrada.',
         'admin_phrases_no_phrases_explanation' => 'Você ainda não criou nenhuma Frase.',
